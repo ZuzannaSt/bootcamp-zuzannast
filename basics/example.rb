@@ -1,34 +1,15 @@
 class Article
+  attr_reader :title, :body, :author, :created_at
+  attr_accessor :likes, :dislikes
 
-attr_reader :title
-attr_reader :body
-attr_reader :author
-attr_reader :created_at
-attr_accessor :likes
-attr_accessor :dislikes
+  def initialize(title, body, author=nil)
+  	@title = "New OSX"
+  	@body = "Some text about new OSX"
+  	@author = author
 
-  def title
-    @title
+  	@created_at = Time.now
+  	@likes = 0
+    @dislikes = 0
+
   end
-
-  def body
-    @body
-  end
-
-  def author
-    @author
-  end
-
-  def created_at
-    @created_at
-  end
-
-  def likes(value)
-    @likes = value
-  end
-
-  def dislikes(value)
-    @dislikes = value
-  end
-
 end
