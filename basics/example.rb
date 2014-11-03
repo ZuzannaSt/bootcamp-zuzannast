@@ -21,11 +21,11 @@ class Article
   end
 
   def points
-  	@points = @likes - @dislikes
+  	@points = likes - dislikes
   end
 
   def votes
-  	@votes = @likes + @dislikes
+  	@votes = likes + dislikes
   end
 
   def long_lines   
