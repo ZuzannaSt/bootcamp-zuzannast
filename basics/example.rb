@@ -21,11 +21,11 @@ class Article
   end
 
   def points
-    @points = likes - dislikes
+    likes - dislikes
   end
 
   def votes
-    @votes = likes + dislikes
+    likes + dislikes
   end
 
   def long_lines   
@@ -47,10 +47,6 @@ class Article
   end
 
   def contain?(value)
-    if !!@body.match(value) 
-      true
-    else
-      false
-    end
+    !!@body.match(value)
   end
 end
