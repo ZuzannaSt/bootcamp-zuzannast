@@ -1,6 +1,6 @@
 class Article
   attr_reader :title, :body, :author, :created_at
-  attr_accessor :likes, :dislikes, :points, :votes
+  attr_accessor :likes, :dislikes
 
   def initialize(title, body, author=nil)
     @title = title
@@ -52,12 +52,5 @@ class Article
     else
       false
     end
-  end
-end
-
-
-class ArticlesFileSystem
-  def initialize(dir)
-    @dir = dir
   end
 end
