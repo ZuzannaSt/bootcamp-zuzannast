@@ -10,6 +10,6 @@ class Article
   	@created_at = Time.now
   	@likes = 0
     @dislikes = 0
-
   end
+  
 end
