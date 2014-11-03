@@ -3,8 +3,8 @@ class Article
   attr_accessor :likes, :dislikes, :points, :votes
 
   def initialize(title, body, author=nil)
-    @title = "New OSX"
-    @body = "Some text about new OSX"
+    @title = title
+    @body = body
     @author = author
 
     @created_at = Time.now
@@ -52,5 +52,11 @@ class Article
     else
       false
     end
+  end
+end
+
+
+class ArticlesFileSystem
+  def initialize
   end
 end
