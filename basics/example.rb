@@ -37,10 +37,8 @@ class Article
   end
 
   def truncate(limit)
-    limit = limit - 3
-    if body.length > limit
-      body.slice(limit..body.length)
-      body << ('...')
+    if length > limit
+      body.slice(0, limit - 3) + "..."
     else
       body
     end
