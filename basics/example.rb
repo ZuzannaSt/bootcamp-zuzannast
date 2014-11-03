@@ -29,13 +29,7 @@ class Article
   end
 
   def long_lines   
-    long_line = []
-
-    body.each_line do |line|  
-      long_line << line
-    end
-
-    long_line.select { |line| line.length > 80 }
+    body.lines.select { |line| line.length > 80 }
   end
 
   def length
@@ -53,11 +47,10 @@ class Article
   end
 
   def contain?(value)
-    if body.match(value) 
-      return true
+    if !!@body.match(value) 
+      true
     else
-      return false
+      false
     end
   end
-
 end
