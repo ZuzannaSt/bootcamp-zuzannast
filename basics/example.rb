@@ -57,6 +57,7 @@ end
 
 
 class ArticlesFileSystem
-  def initialize
+  def initialize(dir)
+    @dir = dir
   end
 end
