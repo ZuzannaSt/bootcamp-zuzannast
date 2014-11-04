@@ -58,7 +58,7 @@ class ArticlesFileSystem
     articles.each do |article|
       file_name = article.title.downcase.gsub(' ', '_')
       path = @dir + '/' + file_name + '.article'
-      file_body = [article.author, article.likes, article.dislikes, article.body].join("||")
+      file_body = [article.author, article.likes, article.dislikes, article.body].join('||')
       File.open(path, "w+") { |f| f.write(file_body) }
     end
   end
@@ -66,14 +66,17 @@ class ArticlesFileSystem
   def load
     articles = []
     Dir.glob(@dir + "/*.article").each do |file|
-      filename = file.split('.')[0]
-      filename = filename.split('/')[1]
-      filename = filename.gsub('_',' ').capitalize
-      author, body, likes, dislikes = File.open(file).read.split('||', 4)
+      file_name = file.split('.')[0]
+      file_name = file_name.split('/')[1]
+      file_name = file_name.gsub('_',' ').capitalize
+      author, likes, dislikes, body = File.open(file).read.split('||', 4)
       likes = likes.to_i
       dislikes = dislikes.to_i
-      article = Article.new(filename, author, body, likes, dislikes)
-         
+      article = Article.new(file_name, body, author)
+
+      likes.times {article.like!}
+      dislikes.times {article.dislike!}
+
       articles << article
     end
     articles
@@ -84,12 +87,15 @@ class WebPage
   
   def initialize(dir='/')
     @dir = dir
+    @articles = []
   end
 
   def articles
-    articles.each do |article|
-      Article.load
-    end
+    @articles
   end
 
+  def load
+    ArticlesFileSystem.load(@dir)
+  end
+  
 end
