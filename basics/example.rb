@@ -56,10 +56,26 @@ class ArticlesFileSystem
 
   def save(articles)
     articles.each do |article|
-      title = article.title.downcase.gsub(' ', '_')
-      path = @dir + '/' + title + '.article'
+      file_name = article.title.downcase.gsub(' ', '_')
+      path = @dir + '/' + file_name + '.article'
       file_body = [article.author, article.likes, article.dislikes, article.body].join("||")
       File.open(path, "w+") { |f| f.write(file_body) }
     end
+  end
+
+  def load
+    articles = []
+    Dir.glob(@dir + "/*.article").each do |file|
+      filename = file.split('.')[0]
+      filename = filename.split('/')[1]
+      filename = filename.gsub('_',' ').capitalize
+      author, body, likes, dislikes = File.open(file).read.split('||', 4)
+      likes = likes.to_i
+      dislikes = dislikes.to_i
+      article = Article.new(filename, author, body, likes, dislikes)
+         
+      articles << article
+    end
+    articles
   end
 end
