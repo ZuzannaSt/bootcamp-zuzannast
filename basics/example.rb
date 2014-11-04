@@ -79,3 +79,29 @@ class ArticlesFileSystem
     articles
   end
 end
+
+class WebPage
+  
+  def initialize(dir='/')
+    @dir = dir
+    @articles = []
+  end
+
+  def articles
+    @articles
+  end
+
+  def load
+    ArticlesFileSystem.load
+  end
+
+  def save
+  end
+
+  def new_article(title, body, author)
+    @title = title
+    @body = body
+    @author = author
+  end
+
+end
