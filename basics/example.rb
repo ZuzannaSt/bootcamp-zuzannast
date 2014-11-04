@@ -79,3 +79,17 @@ class ArticlesFileSystem
     articles
   end
 end
+
+class WebPage
+  
+  def initialize(dir='/')
+    @dir = dir
+  end
+
+  def articles
+    articles.each do |article|
+      Article.load
+    end
+  end
+
+end
