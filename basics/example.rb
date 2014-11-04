@@ -105,10 +105,12 @@ class WebPage
   end
   
   def new_article(title, body, author)
-    @title = title
-    @body = body
-    @author = author
+        
+    @articles.each do |article|
+      article = article.load
+    end
 
-
+    article = Article.new(title, body, author)
+    @articles << article
   end
 end
