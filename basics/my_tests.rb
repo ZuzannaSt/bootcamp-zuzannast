@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require './example'
+require 'mktemp'
 
 class ArticleTest < Minitest::Test
   def setup
@@ -64,5 +65,21 @@ class ArticleTest < Minitest::Test
 
   def test_contain
     assert_match("New Windows 10", @with_author.body)
+  end
+end
+
+class ArticlesFileSystemTest < Minitest::Test
+  def setup
+    @articles = [Article.New("Some title", "Some long body", "Some author")]
+    @tmp_dir = Dir.mktempdir(@articles.title) 
+    @file_system = ArticlesFileSystem.New(@tmp_dir)
+  end
+
+  def test_saving
+    @file_system.save(@articles)
+    
+  end
+
+  def test_loading
   end
 end
