@@ -48,3 +48,18 @@ class Article
     !!@body.match(value)
   end
 end
+
+class ArticlesFileSystem
+  def initialize(dir)
+    @dir = dir
+  end
+
+  def save(articles)
+    articles.each do |article|
+      title = article.title.downcase.gsub(' ', '_')
+      path = @dir + '/' + title + '.article'
+      file_body = [article.author, article.likes, article.dislikes, article.body].join("||")
+      File.open(path, "w+") { |f| f.write(file_body) }
+    end
+  end
+end
