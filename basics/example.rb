@@ -84,7 +84,7 @@ class ArticlesFileSystem
 end
 
 class WebPage
-  
+
   def initialize(dir='/')
     @dir = dir
     @articles = []
@@ -95,7 +95,20 @@ class WebPage
   end
 
   def load
-    ArticlesFileSystem.load(@dir)
+    article = ArticlesFileSystem.load(@dir) 
+    @articles << article
+  end
+
+
+  def save
+    ArticlesFileSystem.save(@articles)
   end
   
+  def new_article(title, body, author)
+    @title = title
+    @body = body
+    @author = author
+
+
+  end
 end
