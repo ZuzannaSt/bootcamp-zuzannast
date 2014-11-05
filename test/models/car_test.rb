@@ -1,7 +1,20 @@
 require 'test_helper'
 
 class CarTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+  	@maluch = cars(:maluch)
+  end
+
+  test "should not save car without model" do
+  	@maluch.model = nil
+  	assert_not @maluch.valid?
+  	assert_not @maluch.errors[:model].empty?
+  end
+
+  test "should not save car without registration_number" do
+  	@maluch.registration_number = nil
+  	assert_not @maluch.valid?
+  	assert_not @maluch.errors[:registration_number].empty?
+  end
+
 end
