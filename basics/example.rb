@@ -66,13 +66,12 @@ class ArticlesFileSystem
   def load
     articles = []
     Dir.glob(@dir + "/*.article").each do |file|
-      file_name = file.split('.')[0]
-      file_name = file_name.split('/')[1]
+      file_name = File.basename(file, ".article")
       file_name = file_name.gsub('_',' ').capitalize
-      author, likes, dislikes, body = File.open(file).read.split('||', 4)
-      likes = likes.to_i
-      dislikes = dislikes.to_i
+      author, likes, dislikes, body = File.read(file).split('||', 4)
       article = Article.new(file_name, body, author)
+      likes = likes.to_i
+      dislikes = likes.to_i
 
       likes.times {article.like!}
       dislikes.times {article.dislike!}
@@ -113,16 +112,6 @@ attr_reader :articles
   end
 
   def longest_articles
-    
-    articles = []
-
-    @articles.each do |article|
-      article = article.load
-      length = article.body.length
-      article = article.sort_by[:length]
-    
-      articles << article
-    end
-    articles
+    sorted = @articles.sort_by([:body.length])
   end
 end
