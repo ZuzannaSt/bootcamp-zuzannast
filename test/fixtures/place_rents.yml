@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: 2014-11-05 10:50:27
+  end_date: 2014-11-05 10:50:27
+  price: 9.99
+  car_id: 1
+  parking_id: 1
+
+two:
+  start_date: 2014-11-05 10:50:27
+  end_date: 2014-11-05 10:50:27
+  price: 9.99
+  car_id: 1
+  parking_id: 1
