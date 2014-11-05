@@ -113,4 +113,18 @@ class WebPage
     article = Article.new(title, body, author)
     @articles << article
   end
+
+  def longest_articles
+    
+    articles = []
+
+    @articles.each do |article|
+      article = article.load
+      length = article.body.length
+      article = article.sort_by[:length]
+    
+      articles << article
+    end
+    articles
+  end
 end
