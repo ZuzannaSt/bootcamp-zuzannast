@@ -85,6 +85,8 @@ end
 
 class WebPage
 
+attr_reader :articles
+
   def initialize(dir='/')
     @dir = dir
     @articles = []
