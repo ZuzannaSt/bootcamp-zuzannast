@@ -84,18 +84,45 @@ class ArticlesFileSystem
 end
 
 class WebPage
-  
+
+attr_reader :articles
+
   def initialize(dir='/')
     @dir = dir
     @articles = []
   end
 
-  def articles
-    @articles
+  def load
+    article = ArticlesFileSystem.load(@dir) 
+    @articles << article
   end
 
-  def load
-    ArticlesFileSystem.load(@dir)
+
+  def save
+    ArticlesFileSystem.save(@articles)
   end
   
+  def new_article(title, body, author)
+        
+    @articles.each do |article|
+      article = article.load
+    end
+
+    article = Article.new(title, body, author)
+    @articles << article
+  end
+
+  def longest_articles
+    
+    articles = []
+
+    @articles.each do |article|
+      article = article.load
+      length = article.body.length
+      article = article.sort_by[:length]
+    
+      articles << article
+    end
+    articles
+  end
 end
