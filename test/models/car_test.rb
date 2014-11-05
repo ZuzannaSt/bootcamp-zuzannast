@@ -5,6 +5,12 @@ class CarTest < ActiveSupport::TestCase
   	@maluch = cars(:maluch)
   end
 
+  test "should save car" do
+    assert @maluch.valid?
+    assert @maluch.errors[:model].empty?
+    assert @maluch.errors[:registration_number].empty?
+  end
+
   test "should not save car without model" do
   	@maluch.model = nil
   	assert_not @maluch.valid?
