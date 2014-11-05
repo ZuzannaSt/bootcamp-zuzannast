@@ -70,11 +70,8 @@ class ArticlesFileSystem
       file_name = file_name.gsub('_',' ').capitalize
       author, likes, dislikes, body = File.read(file).split('||', 4)
       article = Article.new(file_name, body, author)
-      likes = likes.to_i
-      dislikes = likes.to_i
-
-      likes.times {article.like!}
-      dislikes.times {article.dislike!}
+      article.likes = likes.to_i
+      article.dislikes = dislikes.to_i
 
       articles << article
     end
