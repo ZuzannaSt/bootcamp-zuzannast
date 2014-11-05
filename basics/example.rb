@@ -92,10 +92,6 @@ attr_reader :articles
     @articles = []
   end
 
-  def articles
-    @articles
-  end
-
   def load
     article = ArticlesFileSystem.load(@dir) 
     @articles << article
