@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  places: 1
+  kind: MyString
+  hour_price: 1.00
+  day_price: 1.00
+  address_id: 1
+  owner_id: 1
+  
+two:
+  places: 1
+  kind: MyString
+  hour_price: 1.00
+  day_price: 1.00
+  address_id: 1
+  owner_id: 1
