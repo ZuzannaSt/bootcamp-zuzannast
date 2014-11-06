@@ -20,17 +20,21 @@ class ParkingsController < ApplicationController
 
     respond_to do |format|
       if @parking.save
-        format.html { redirect_to @parking, notice: 'parking was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @parking }
+        format.html { redirect_to @parking }
       else
         format.html { render action: 'new' }
-        format.json { render json: @parking.errors, status: :unprocessable_entity }
     end
 end
   end
 
   def update
-    @parking = Parking.update(parking_params)
+   respond_to do |format|
+      if @parking.update(parking_params)
+        format.html { redirect_to @parking }
+      else
+        format.html { render action: 'edit' }
+      end
+    end
   end
 
   private
