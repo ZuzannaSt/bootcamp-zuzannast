@@ -20,28 +20,24 @@ before_filter :parking, only: [:show, :edit, :update, :destroy]
   def create
     @parking = Parking.new(parking_params)
 
-    respond_to do |format|
-      if @parking.save
-        format.html { redirect_to @parking }
-      else
-        format.html { render action: 'new' }
-      end
+    if @parking.save
+        redirect_to @parking, notice: 'Parking was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
   def update
-   respond_to do |format|
-      if @parking.update(parking_params)
-        format.html { redirect_to @parking }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @parking.update(parking_params)
+        redirect_to @parking, notice: 'Parking was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
   def destroy
     @parking.destroy
-    redirect_to parkings_url
+    redirect_to parkings_url, notice: 'Parking was successfully destroyed'
   end
 
   private

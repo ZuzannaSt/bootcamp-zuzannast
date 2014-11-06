@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 <h1> Show parking </h1>
 
 <table>
@@ -16,7 +17,7 @@
     <td><%= @parking.address.try(:city) %></td>
     <td><%= @parking.address.try(:zip_code) %></td>
     <td><%= @parking.address.try(:street) %></td>
-    <td><%= @parking.owner.try(:first_name) %><%= @parking.owner.try.(:second_name) %></td>
+    <td><%= @parking.owner.try(:first_name) %></td>
     <td><%= @parking.kind %></td>
     <td><%= @parking.places %></td>
     <td><%= @parking.hour_price %></td>
