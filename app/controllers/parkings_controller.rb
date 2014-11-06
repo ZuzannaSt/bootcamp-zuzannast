@@ -39,7 +39,7 @@ end
 
   private
     def parking_params
-      params.require(:parking).permit(:places, :kind, :hour_price, :day_price, :address_id, :owner_id) 
+      params.require(:parking).permit(:places, :kind, :hour_price, :day_price) 
     end
 
 end
