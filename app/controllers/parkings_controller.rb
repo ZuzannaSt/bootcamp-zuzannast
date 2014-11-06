@@ -42,7 +42,7 @@ before_filter :parking, only: [:show, :edit, :update, :destroy]
 
   private
     def parking_params
-      params.require(:parking).permit(:places, :kind, :hour_price, :day_price, {:address_attributes => [ :zip_code, :street, :city ]}) 
+      params.require(:parking).permit(:places, :kind, :hour_price, :day_price, address_attributes: [ :zip_code, :street, :city ]) 
     end
 
     def parking
