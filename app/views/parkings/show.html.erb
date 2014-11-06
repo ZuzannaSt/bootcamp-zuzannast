@@ -3,6 +3,9 @@
 <table>
   <tr>
     <th>City</th>
+    <th>Zip code</th>
+    <th>Street</th>
+    <th>Owner</th>
     <th>Kind</th>
     <th>Places</th>
     <th>Hour price</th>
@@ -11,6 +14,9 @@
 
   <tr>
     <td><%= @parking.address.city if @parking.address %></td>
+    <td><%= @parking.address.zip_code if @parking.address %></td>
+    <td><%= @parking.address.street if @parking.address %></td>
+    <td><%= @parking.owner.first_name if @parking.owner %><%= @parking.owner.second_name if @parking.owner %></td>
     <td><%= @parking.kind %></td>
     <td><%= @parking.places %></td>
     <td><%= @parking.hour_price %></td>
