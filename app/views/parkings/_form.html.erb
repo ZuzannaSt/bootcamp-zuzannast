@@ -1,8 +1,10 @@
 <%= form_for @parking do |f| %>
  <% if @parking.errors.any? %>
-    <% @parking.errors.full_messages.each do |msg| %>
-      <%= msg %>
-    <% end %>
+    <ul>
+      <% @parking.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
   <% end %>
 
   <%= f.fields_for :address do |a| %>
