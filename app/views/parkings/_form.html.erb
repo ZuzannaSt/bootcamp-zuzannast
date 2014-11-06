@@ -1,0 +1,25 @@
+<%= form_for(parking) do |f| %>
+  <p>
+    <b>Parking places</b><br>
+    <%= f.text_field :places %>
+  </p>
+  
+  <p>
+    <b>Parking kind</b><br>
+    <%= f.text_field :kind %>
+  </p>
+  
+  <p>
+   	<b>Parking hour price</b><br>
+    <%= f.text_field :hour_price %>
+  </p>
+  
+  <p>
+    <b>Parking day price</b><br>
+    <%= f.text_field :day_price %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
