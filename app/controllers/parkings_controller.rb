@@ -1,5 +1,5 @@
 class ParkingsController < ApplicationController
-before_filter :parking, only: [:show, :edit, :update]
+before_filter :parking, only: [:show, :edit, :update, :destroy]
 
   def index
     @parkings = Parking.all
@@ -35,6 +35,11 @@ before_filter :parking, only: [:show, :edit, :update]
         format.html { render action: 'edit' }
       end
     end
+  end
+
+  def destroy
+    @parking.destroy
+    redirect_to parkings_url
   end
 
   private
