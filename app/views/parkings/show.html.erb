@@ -1,0 +1,25 @@
+<h1> Show parking </h1>
+
+<table>
+  <tr>
+    <th>City</th>
+    <th>Kind</th>
+    <th>Places</th>
+    <th>Hour price</th>
+    <th>Day price</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <tr>
+    <td><%= @parking.address.city %></td>
+    <td><%= @parking.kind %></td>
+    <td><%= @parking.places %></td>
+    <td><%= @parking.hour_price %></td>
+    <td><%= @parking.day_price %></td>
+   
+    <td><%= link_to "Parking list", parkings  %></td>
+  </tr>
+  <% end %>
+
+</table>
