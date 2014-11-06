@@ -1,11 +1,11 @@
 class ParkingsController < ApplicationController
+before_filter :parking, only: [:show, :edit, :update]
 
   def index
     @parkings = Parking.all
   end
 
   def show
-    @parking = Parking.find(params[:id])
   end
 
   def new
@@ -23,8 +23,8 @@ class ParkingsController < ApplicationController
         format.html { redirect_to @parking }
       else
         format.html { render action: 'new' }
+      end
     end
-end
   end
 
   def update
@@ -42,4 +42,7 @@ end
       params.require(:parking).permit(:places, :kind, :hour_price, :day_price) 
     end
 
+    def parking
+      @parking = Parking.find(params[:id])
+    end
 end
