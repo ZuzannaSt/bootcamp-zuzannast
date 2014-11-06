@@ -12,10 +12,26 @@ class ParkingsController < ApplicationController
     @parking = Parking.new
   end
 
-  def create
-    @parking = Parking.new(parking_params)
+  def edit
   end
 
+  def create
+    @parking = Parking.new(parking_params)
+
+    respond_to do |format|
+      if @parking.save
+        format.html { redirect_to @parking, notice: 'parking was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @parking }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @parking.errors, status: :unprocessable_entity }
+    end
+end
+  end
+
+  def update
+    @parking = Parking.update(parking_params)
+  end
 
   private
     def parking_params
