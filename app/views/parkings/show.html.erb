@@ -7,19 +7,15 @@
     <th>Places</th>
     <th>Hour price</th>
     <th>Day price</th>
-    <th></th>
-    <th></th>
   </tr>
 
   <tr>
-    <td><%= @parking.address.city %></td>
+    <td><% if @parking.address %><%= @parking.address.city %><% end %></td>
     <td><%= @parking.kind %></td>
     <td><%= @parking.places %></td>
     <td><%= @parking.hour_price %></td>
     <td><%= @parking.day_price %></td>
-   
-    <td><%= link_to "Parking list", parkings  %></td>
   </tr>
-  <% end %>
-
 </table>
+
+<%= link_to "<<< Back", :back  %>
