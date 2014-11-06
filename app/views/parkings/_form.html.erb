@@ -1,10 +1,11 @@
 <%= form_for(@parking) do |f| %>
  <% if @parking.errors.any? %>
   <%= pluralize(@parking.errors.count, "error") %> prohibited this parking from being saved:
-  <% @parking.errors.full_messages.each do |msg| %>
-    <%= msg %>
+    <% @parking.errors.full_messages.each do |msg| %>
+      <%= msg %>
+    <% end %>
   <% end %>
-<% end %>
+  
   <p>
     <b>Parking places</b><br>
     <%= f.text_field :places %>
