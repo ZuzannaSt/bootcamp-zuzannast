@@ -21,7 +21,7 @@ before_filter :parking, only: [:show, :edit, :update, :destroy]
     @parking = Parking.new(parking_params)
 
     if @parking.save
-        redirect_to @parking, notice: 'Parking was successfully created.'
+      redirect_to @parking, notice: 'Parking was successfully created.'
     else
       render action: 'new'
     end
@@ -29,7 +29,7 @@ before_filter :parking, only: [:show, :edit, :update, :destroy]
 
   def update
     if @parking.update(parking_params)
-        redirect_to @parking, notice: 'Parking was successfully updated.'
+      redirect_to @parking, notice: 'Parking was successfully updated.'
     else
       render action: 'edit'
     end

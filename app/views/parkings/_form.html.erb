@@ -29,7 +29,7 @@
   
   <p>
     <b>Parking kind</b><br>
-    <%= f.text_field :kind %>
+    <%= f.select :kind, ['indoor', 'outdoor', 'private', 'street'], {include_blank: "Choose kind", default: nil} %>
   </p>
   
   <p>
