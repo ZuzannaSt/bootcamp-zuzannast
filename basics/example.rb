@@ -87,8 +87,8 @@ class WebPage
   attr_reader :articles, :articles_file_system
 
   def initialize(dir = '/')
-    @articles = []
     @articles_file_system = ArticlesFileSystem.new(dir)
+    @articles = []
   end
 
   def load
@@ -100,10 +100,6 @@ class WebPage
   end
   
   def new_article(title, body, author)      
-    @articles.each do |article|
-      article = article.load
-    end
-
     article = Article.new(title, body, author)
     @articles << article
   end
