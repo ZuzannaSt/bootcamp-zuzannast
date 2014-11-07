@@ -14,10 +14,18 @@
     <tr>
       <td colspan="3">
         <% if @place.parking && @place.parking.address %>
-        <%= link_to @place.parking.address.city, @place.parking %>
+          <%= link_to @place.parking.address.city, @place.parking %>
+        <% else %>
+          No city
         <% end %>
       </td>
-      <td colspan="3"><%= link_to @place.car.try(:model), @place.car %></td>
+      <td colspan="3">
+        <% if @place.car && @place.car.model %>
+          <%= link_to @place.car.model, @place.car %>
+        <% else %>
+          No model
+        <% end %>
+      </td>
       <td colspan="3"><%= @place.start_date %></td>
       <td colspan="3"><%= @place.end_date %></td>
       <td colspan="3"><%= link_to "Show", @place %></td>

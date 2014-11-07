@@ -3,7 +3,4 @@ class PlaceRent < ActiveRecord::Base
 	belongs_to :parking
 	belongs_to :car
 	has_many :people
-
-  accepts_nested_attributes_for :car
-  accepts_nested_attributes_for :parking
 end
