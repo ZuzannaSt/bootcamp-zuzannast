@@ -15,36 +15,36 @@ class ParkingTest < ActiveSupport::TestCase
 
   test "should not save parking without places" do
     @outdoor.places = nil
-    assert_not @outdoor.valid?
+    assert @outdoor.invalid?
     assert_not @outdoor.errors[:places].empty?
   end
 
   test "should not save parking without kind" do
     @outdoor.kind = nil
-    assert_not @outdoor.valid?
+    assert @outdoor.invalid?
     assert_not @outdoor.errors[:kind].empty?
   end
 
   test "should not save parking without hour_price" do
     @outdoor.hour_price = nil
-    assert_not @outdoor.valid?
+    assert @outdoor.invalid?
     assert_not @outdoor.errors[:hour_price].empty?
   end
 
   test "should not save parking without day_price" do
     @outdoor.day_price = nil
-    assert_not @outdoor.valid?
+    assert @outdoor.invalid?
     assert_not @outdoor.errors[:day_price].empty?
   end
 
   test "should have numeric hour_price" do
     @outdoor.hour_price = "lalala"
-    assert_not @outdoor.valid?
+    assert @outdoor.invalid?
     assert_not @outdoor.errors[:hour_price].empty?
   end
 
   test "kind should have value from list" do
     @outdoor.kind = "something"
-    assert_not @outdoor.valid?
+    assert @outdoor.invalid?
   end
 end

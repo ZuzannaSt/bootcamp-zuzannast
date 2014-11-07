@@ -12,7 +12,7 @@ class PersonTest < ActiveSupport::TestCase
 
     test "should not save person without first_name" do
       @steve.first_name = nil
-      assert_not @steve.valid?
+      assert @steve.invalid?
       assert_not @steve.errors[:first_name].empty?
     end
 end

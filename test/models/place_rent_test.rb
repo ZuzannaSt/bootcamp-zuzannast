@@ -15,25 +15,25 @@ class PlaceRentTest < ActiveSupport::TestCase
 
   test "should not save place_rent without start_date" do
     @hour.start_date = nil
-    assert_not @hour.valid?
+    assert @hour.invalid?
     assert_not @hour.errors[:start_date].empty?
   end
 
   test "should not save place_rent without end_date" do
     @hour.end_date = nil
-    assert_not @hour.valid?
+    assert @hour.invalid?
     assert_not @hour.errors[:end_date].empty?
   end
 
   test "should not save place_rent without parking" do
     @hour.parking = nil
-    assert_not @hour.valid?
+    assert @hour.invalid?
     assert_not @hour.errors[:parking].empty?
   end
 
   test "should not save place_rent without car" do
     @hour.car = nil
-    assert_not @hour.valid?
+    assert @hour.invalid?
     assert_not @hour.errors[:car].empty?
   end
 end
