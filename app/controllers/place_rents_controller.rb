@@ -9,7 +9,6 @@ class PlaceRentsController < ApplicationController
 
   def new
     @place = PlaceRent.new
-    @cars = current_person.cars
   end
 
   def create
