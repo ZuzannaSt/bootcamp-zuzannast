@@ -9,6 +9,7 @@ class CarTest < ActiveSupport::TestCase
     assert @maluch.valid?
     assert @maluch.errors[:model].empty?
     assert @maluch.errors[:registration_number].empty?
+    assert @maluch.errors[:owner].empty?
   end
 
   test "should not save car without model" do
@@ -23,4 +24,9 @@ class CarTest < ActiveSupport::TestCase
   	assert_not @maluch.errors[:registration_number].empty?
   end
 
+  test "should not save car without owner" do
+    @maluch.owner = nil
+    assert_not @maluch.valid?
+    assert_not @maluch.errors[:owner].empty?
+  end
 end
