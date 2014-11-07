@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CarTest < ActiveSupport::TestCase
   def setup
-  	@maluch = cars(:maluch)
+    @maluch = cars(:maluch)
   end
 
   test "should save car" do
@@ -13,15 +13,15 @@ class CarTest < ActiveSupport::TestCase
   end
 
   test "should not save car without model" do
-  	@maluch.model = nil
-  	assert_not @maluch.valid?
-  	assert_not @maluch.errors[:model].empty?
+    @maluch.model = nil
+    assert_not @maluch.valid?
+    assert_not @maluch.errors[:model].empty?
   end
 
   test "should not save car without registration_number" do
-  	@maluch.registration_number = nil
-  	assert_not @maluch.valid?
-  	assert_not @maluch.errors[:registration_number].empty?
+    @maluch.registration_number = nil
+    assert_not @maluch.valid?
+    assert_not @maluch.errors[:registration_number].empty?
   end
 
   test "should not save car without owner" do
