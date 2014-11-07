@@ -1,0 +1,28 @@
+<%= form_for @place do |f| %>
+ <% if @place.errors.any? %>
+    <ul>
+      <% @place.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    <b>Start date</b><br>
+    <%= f.text_field :start_date %>
+  </p>
+
+  <p>
+    <b>End date</b><br>
+    <%= f.text_field :end_date %>
+  </p>
+  
+  <p>
+    <b>Select car</b><br>
+    <%= f.select :car, current_person.cars.collect{ |c| c.model }, { prompt: 'Select car' }  %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

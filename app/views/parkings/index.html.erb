@@ -2,24 +2,26 @@
  
 <table>
   <tr>
-    <th>City</th>
-    <th>Places</th>
-    <th>Hour price</th>
-    <th>Day price</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th colspan="3">City</th>
+    <th colspan="3">Places</th>
+    <th colspan="3">Hour price</th>
+    <th colspan="3">Day price</th>
+    <th colspan="3"></th>
+    <th colspan="3"></th>
+    <th colspan="3"></th>
+    <th colspan="3"></th>
   </tr>
  
 <% @parkings.each do |parking| %>
   <tr>
-    <td><% if parking.address %><%= parking.address.city %><% end %></td>
-    <td><%= parking.places %></td>
-    <td><%= parking.hour_price %></td>
-    <td><%= parking.day_price %></td>
-    <td><%= link_to "Show", parking %></td>
-    <td><%= link_to "Edit", edit_parking_path(parking) %></td>
-    <td><%= link_to "Remove", parking, method: :delete, data: { confirm: "Are you sure?" } %></td>
+    <td colspan="3"><% if parking.address %><%= parking.address.city %><% end %></td>
+    <td colspan="3"><%= parking.places %></td>
+    <td colspan="3"><%= parking.hour_price %></td>
+    <td colspan="3"><%= parking.day_price %></td>
+    <td colspan="3"><%= link_to "RENT", new_parking_place_rent_path(parking.id) %>
+    <td colspan="3"><%= link_to "Show", parking %></td>
+    <td colspan="3"><%= link_to "Edit", edit_parking_path(parking) %></td>
+    <td colspan="3"><%= link_to "Remove", parking, method: :delete, data: { confirm: "Are you sure?" } %></td>
   </tr>
 <% end %>
 </table>

@@ -8,4 +8,5 @@ class Parking < ActiveRecord::Base
 	has_many :place_rents
 
   accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :owner
 end
