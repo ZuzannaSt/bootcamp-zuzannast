@@ -9,11 +9,12 @@ class PlaceRentsController < ApplicationController
 
   def new
     @place = PlaceRent.new
+    @parking = Parking.find(params[:parking_id])
   end
 
   def create
-    @place = Parking.new(place_rent_params)
-
+    @place = Parking.find(params[:parking_id]).place_rents.build(place_rent_params)
+    
     if @place.save
       redirect_to @place, notice: 'Place was successfully rented.'
     else
@@ -23,6 +24,6 @@ class PlaceRentsController < ApplicationController
 
   private
   def place_rent_params
-    params.require(:place_rent).permit(:start_date, :end_date) 
+    params.require(:place_rent).permit(:start_date, :end_date, :car_id) 
   end
 end

@@ -1,4 +1,4 @@
-<%= form_for @place do |f| %>
+<%= form_for ([@parking, @place]) do |f| %>
  <% if @place.errors.any? %>
     <ul>
       <% @place.errors.full_messages.each do |msg| %>
@@ -16,10 +16,10 @@
     <b>End date</b><br>
     <%= f.datetime_select :end_date %>
   </p>
-  
+
   <p>
     <b>Select car</b><br>
-    <%= f.select :car, current_person.cars.collect{ |c| c.model }, { prompt: 'Select car' }  %>
+    <%= f.collection_select :car_id, current_person.cars, :id, :model, { prompt: 'Select car' }  %>
   </p>
   
   <p>
