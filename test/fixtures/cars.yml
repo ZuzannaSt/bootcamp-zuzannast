@@ -3,7 +3,9 @@
 ferrari:
   model: Ferrari
   registration_number: 1
+  owner: zuza
 
 maluch:
   model: Maluch
   registration_number: 2
+  owner: steve
