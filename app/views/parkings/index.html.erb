@@ -27,24 +27,28 @@
 </table>
 <br>
 <h3> Search for parking: </h3>
-<%= form_tag("/search", method: "get") do %>
+<%= form_tag(parkings_path, method: "get") do %>
   <div>
     <%= label_tag(:city, "City:") %>
     <%= text_field_tag :city %><br>
   </div>
   <div>
-    <%= label_tag(:hour_price, "Hour price") %>
-    <%= text_field_tag :hour_price %>
+    <%= label_tag(:min_day_price, "Min day price") %>
+    <%= text_field_tag :min_day_price, '', size: 2 %>
+    <%= label_tag(:max_day_price, "Max day price") %>
+    <%= text_field_tag :max_day_price, '', size: 2 %>
   </div>
   <div>
-    <%= label_tag(:day_price, "Day price") %>
-    <%= text_field_tag :day_price %>
+    <%= label_tag(:min_hour_price, "Min hour price") %>
+    <%= text_field_tag :min_hour_price, '', size: 2 %>
+    <%= label_tag(:max_hour_price, "Max hour price") %>
+    <%= text_field_tag :max_hour_price, '', size: 2 %>
   </div>
   <div>
-    <%= label_tag(:private, "Private") %>
-    <%= check_box_tag("private") %>
-    <%= label_tag(:public, "Public") %>
-    <%= check_box_tag("public") %>
+    <%= label_tag(:private_parking, "Private") %>
+    <%= check_box_tag("private_parking") %>
+    <%= label_tag(:public_parking, "Public") %>
+    <%= check_box_tag("public_parking") %>
   </div> 
   <div>
   <%= submit_tag("Search") %>

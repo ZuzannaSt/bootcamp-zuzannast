@@ -56,7 +56,7 @@ class ParkingTest < ActiveSupport::TestCase
   end
 
   test "should get a list of all public parkings" do
-    assert_equal([@public], Parking.public_parkings)
+    assert_equal([@outdoor, @public], Parking.public_parkings)
   end
 
   test "should get a list of all private parkings" do
