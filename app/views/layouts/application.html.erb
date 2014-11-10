@@ -9,8 +9,7 @@
 <body>
 
 <%= render "layouts/navbar" %>
-
-<p id="notice"><%= notice %></p>
+<%= render "layouts/flash" if !flash.empty? %>
 <%= yield %>
 
 </body>
