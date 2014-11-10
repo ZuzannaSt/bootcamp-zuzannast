@@ -39,7 +39,6 @@ class PlaceRentTest < ActiveSupport::TestCase
   end
 
   test "should calculate price before saving" do
-    #@hour.calculate_price
     assert_in_delta(2.00, @price, delta = 0.001)
   end
 end

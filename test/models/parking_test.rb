@@ -3,6 +3,7 @@ require 'test_helper'
 class ParkingTest < ActiveSupport::TestCase
   def setup
     @outdoor = parking(:outdoor)
+    @end_date = @outdoor.set_end_date
   end
 
   test "should save parking" do
@@ -46,5 +47,9 @@ class ParkingTest < ActiveSupport::TestCase
   test "kind should have value from list" do
     @outdoor.kind = "something"
     assert @outdoor.invalid?
+  end
+
+  test "should set end_date before destroying" do
+    assert_in_delta(Time.now, @end_date, delta = 0.001)
   end
 end

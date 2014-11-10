@@ -1,4 +1,5 @@
 class Parking < ActiveRecord::Base
+  before_destroy :set_end_date
   validates :places, presence: true
   validates :hour_price, :day_price, presence: true, numericality: true
   validates :kind, inclusion: { in: %w(outdoor indoor private street) }
@@ -9,4 +10,8 @@ class Parking < ActiveRecord::Base
 
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :owner
+
+  def set_end_date
+    end_date = Time.now
+  end
 end
