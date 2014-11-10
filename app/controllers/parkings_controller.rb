@@ -1,5 +1,9 @@
 class ParkingsController < ApplicationController
-before_filter :parking, only: [:show, :edit, :update, :destroy]
+  before_filter :parking, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+      redirect_to parkings_path, alert: 'Parking was not found.'
+  end
+
 
   def index
     @parkings = Parking.search(params).order(:id)

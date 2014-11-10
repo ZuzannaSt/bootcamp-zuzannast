@@ -1,5 +1,8 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    redirect_to cars_path, alert: 'Car was not found.'
+  end
 
   # GET /cars
   # GET /cars.json
@@ -59,5 +62,11 @@ class CarsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
       params.require(:car).permit(:model, :registration_number)
+    end
+
+    def not_found
+      message = "Car with ID #{params[:id]} not found."
+      logger.error message
+      redirect_to cars_path, info: "message"
     end
 end
