@@ -45,4 +45,12 @@ class ParkingsTest < ActionDispatch::IntegrationTest
     first( :link, 'Remove' ).click
     assert has_no_content? 'Krakow'
   end
+
+  test "user searches for parkings" do
+    visit '/parkings'
+    fill_in 'city', with: "Brzesko"
+    fill_in 'hour_price', with: "2.00"
+    fill_in 'day_price', with: "10.00"
+    check 'private'
+  end
 end

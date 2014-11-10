@@ -26,4 +26,30 @@
 <% end %>
 </table>
 <br>
+<h3> Search for parking: </h3>
+<%= form_tag("/search", method: "get") do %>
+  <div>
+    <%= label_tag(:city, "City:") %>
+    <%= text_field_tag :city %><br>
+  </div>
+  <div>
+    <%= label_tag(:hour_price, "Hour price") %>
+    <%= text_field_tag :hour_price %>
+  </div>
+  <div>
+    <%= label_tag(:day_price, "Day price") %>
+    <%= text_field_tag :day_price %>
+  </div>
+  <div>
+    <%= label_tag(:private, "Private") %>
+    <%= check_box_tag("private") %>
+    <%= label_tag(:public, "Public") %>
+    <%= check_box_tag("public") %>
+  </div> 
+  <div>
+  <%= submit_tag("Search") %>
+  </div>
+<% end %>
+
+<br>
 <%= link_to "Add new parking", new_parking_path(@parking) %>
