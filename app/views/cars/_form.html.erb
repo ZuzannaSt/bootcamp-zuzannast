@@ -13,12 +13,12 @@
 
   <p>
       <b>Car model </b><br>
-      <%= f.text_field :model %>
+      <%= f.text_field :model, id: 'model' %>
     </p>
     
     <p>
       <b>Registration number</b><br>
-      <%= f.text_field :registration_number %>
+      <%= f.text_field :registration_number, id: 'registration_number' %>
     </p>
     
   <%= f.hidden_field :owner_id %>
