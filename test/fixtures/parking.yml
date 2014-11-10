@@ -7,10 +7,16 @@ outdoor:
   day_price: 10.00
   address: brzesko
 
-  
 private:
   places: 50
   kind: private
   hour_price: 7.00
   day_price: 30.00
   address: krakow
+
+public:
+  places: 30
+  kind: public
+  hour_price: 2.00
+  day_price: 15.00
+  address: brzesko
