@@ -2,7 +2,7 @@ class ParkingsController < ApplicationController
 before_filter :parking, only: [:show, :edit, :update, :destroy]
 
   def index
-    @parkings = Parking.all
+    @parkings = Parking.all.order(:id)
   end
 
   def show
