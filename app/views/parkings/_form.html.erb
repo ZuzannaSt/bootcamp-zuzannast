@@ -10,41 +10,41 @@
   <%= f.fields_for :address do |a| %>
     <p>
       <b>City </b><br>
-      <%= a.text_field :city %>
+      <%= a.text_field :city, id: 'city' %>
     </p>
     
     <p>
       <b>Zip code</b><br>
-      <%= a.text_field :zip_code %>
+      <%= a.text_field :zip_code, id: 'zip_code' %>
     </p>
     
     <p>
       <b>Street</b><br>
-      <%= a.text_field :street %>
+      <%= a.text_field :street, id: 'street' %>
     </p>
   <% end %>
 
   <p>
     <b>Parking places</b><br>
-    <%= f.text_field :places %>
+    <%= f.text_field :places, id: 'places' %>
   </p>
   
   <p>
     <b>Parking kind</b><br>
-    <%= f.select :kind, ['indoor', 'outdoor', 'private', 'street'], {include_blank: "Choose kind", default: nil} %>
+    <%= f.select :kind, ['indoor', 'outdoor', 'private', 'street'], {include_blank: "Choose kind", default: nil}, id: 'kind' %>
   </p>
   
   <p>
     <b>Parking hour price</b><br>
-    <%= f.text_field :hour_price %>
+    <%= f.text_field :hour_price, id: 'hour_price' %>
   </p>
   
   <p>
     <b>Parking day price</b><br>
-    <%= f.text_field :day_price %>
+    <%= f.text_field :day_price, id: 'day_price' %>
   </p>
 
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Submit', id: 'submit' %>
   </p>
 <% end %>
