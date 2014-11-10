@@ -1,6 +1,6 @@
 class PlaceRentsController < ApplicationController
   def index
-    @places = PlaceRent.all
+    @places = PlaceRent.all.order(:id)
   end
 
   def show
