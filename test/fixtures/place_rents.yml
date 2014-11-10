@@ -3,13 +3,11 @@
 hour:
   start_date: 2014-11-05 10:50:27
   end_date: 2014-11-05 11:50:27
-  price: 3.00
   parking: outdoor
   car: ferrari
 
 day:
   start_date: 2014-11-05  15:50:27
   end_date: 2014-11-06 15:50:27
-  price: 15.00
   parking: private
   car: maluch
