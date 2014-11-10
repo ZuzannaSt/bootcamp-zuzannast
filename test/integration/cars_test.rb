@@ -4,6 +4,8 @@ class CarsTest < ActionDispatch::IntegrationTest
   test "user opens cars index" do
     visit '/cars'
     assert has_content? 'Your registered cars'
+    assert has_content? 'Maluch'
+    assert has_content? '2'
   end
 
   test "user opens car details" do
@@ -11,6 +13,7 @@ class CarsTest < ActionDispatch::IntegrationTest
     first( :link, 'Show' ).click
     assert has_content? 'Maluch'
     assert has_content? 'Steve'
+    puts page.body
   end
 
   test "user adds a new car" do
