@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class CarsTest < ActionDispatch::IntegrationTest
+  def setup
+    Capybara.reset_session!
+    log_in
+  end
+
   test "user opens cars index" do
     visit '/cars'
     assert has_content? 'Your registered cars'

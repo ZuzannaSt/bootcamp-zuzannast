@@ -6,7 +6,6 @@ require 'capybara/rails'
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
-  Capybara.reset
   # Add more helper methods to be used by all tests here...
 end
 
@@ -21,5 +20,12 @@ class ActionDispatch::IntegrationTest
     select date.strftime('%d'), from: "#{field}_3i" #day 
     select date.strftime('%H'), from: "#{field}_4i" #hour
     select date.strftime('%M'), from: "#{field}_5i" #minute
+  end
+
+  def log_in
+    visit '/parkings'
+    click_link 'Log in'
+    fill_in 'email', with: 'steve@jobs.com'
+    click_button 'Log in'
   end
 end

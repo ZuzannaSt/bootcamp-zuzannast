@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class PlaceRentsTest < ActionDispatch::IntegrationTest
+  def setup
+    Capybara.reset_session!
+    log_in
+  end
+
   test "user opens place_rents index" do
     visit '/place_rents'
     assert has_content? 'Listing rents'

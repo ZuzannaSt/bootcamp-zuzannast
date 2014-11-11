@@ -13,6 +13,7 @@ class Person < ActiveRecord::Base
   end
 
   def self.authenticate(email)
-    person = find_by_email(email)
+    account = Account.find_by_email(email)
+    account.person if account
   end
 end
