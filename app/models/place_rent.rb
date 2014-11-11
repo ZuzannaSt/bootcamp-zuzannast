@@ -5,15 +5,15 @@ class PlaceRent < ActiveRecord::Base
   belongs_to :car
 
   def time_spent
-    (end_date - start_date).to_i/3600
+    (end_date - start_date).to_i / 3600
   end
 
   def days_spent
-    time_spent/24
+    time_spent / 24
   end
 
   def hours_spent
-    time_spent%24    
+    time_spent % 24    
   end
 
   def calculate_price
