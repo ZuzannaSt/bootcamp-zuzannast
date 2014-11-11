@@ -3,7 +3,7 @@ require 'test_helper'
 class PlaceRentTest < ActiveSupport::TestCase
   def setup
     @hour = place_rents(:hour)
-    @price = @hour.calculate_price
+    @price = @hour.save
   end
 
   test "should save place_rent" do
@@ -40,6 +40,6 @@ class PlaceRentTest < ActiveSupport::TestCase
 
   test "should calculate price before saving" do
     @price
-    assert_in_delta(2.00, @price, delta = 0.001)
+    assert_in_delta(2.00, @hour[:price], delta = 0.001)
   end
 end
