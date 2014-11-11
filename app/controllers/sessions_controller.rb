@@ -13,4 +13,9 @@ class SessionsController < ApplicationController
       render "new"
     end
   end
+
+  def destroy
+    session[:person_id] = nil
+    redirect_to parkings_path, :notice => "Logged out!"
+  end
 end

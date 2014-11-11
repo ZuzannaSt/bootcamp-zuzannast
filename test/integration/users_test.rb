@@ -19,4 +19,13 @@ class UsersTest < ActionDispatch::IntegrationTest
     assert has_link? 'Log in'
     assert has_no_content? 'Steve Jobs'
   end
+
+  test "user logs out" do
+    log_in
+    assert has_content? 'Logged in as Steve Jobs.'
+    click_link 'Log out'
+    assert has_content? 'Logged out!'
+    assert has_link? 'Log in'
+    assert has_no_content? 'Steve Jobs'
+  end
 end
