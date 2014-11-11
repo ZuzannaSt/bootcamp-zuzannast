@@ -18,7 +18,11 @@ class Parking < ActiveRecord::Base
   scope :in_city, -> (city) { where( "city = ?", city ).joins(:address) }
 
   def set_end_date
-    end_date = Time.now
+    place_rents.each do |place|
+      if place.end_date > Time.now
+        place.end_date = Time.now
+      end
+    end
   end
 
   def self.search(params)
@@ -32,18 +36,26 @@ class Parking < ActiveRecord::Base
     max_day_price = params[:max_day_price]
     
     parkings = parkings.in_city(city) if city.present?
-    parkings = parkings.public_parkings if public_parking.present?
-    parkings = parkings.private_parkings if private_parking.present?
-
-    min_hour_price = "0" if min_hour_price.blank?
+   
+   if public_parking.blank? && private_parking.present?
+      parkings = parkings.private_parkings
+    elsif private_parking.blank? && public_parking.present?
+      parkings = parkings.public_parkings
+    elsif public_parking.present? && private_parking.present?
+      parkings = parkings
+    end
     
-    if min_hour_price.present? && max_hour_price.present?  
+    if min_hour_price.blank? && max_hour_price.present?
+      min_hour_price = 0  
+      parkings = parkings.hour_price_between(min_hour_price, max_hour_price)
+    elsif min_hour_price.present? && max_hour_price.present?  
       parkings = parkings.hour_price_between(min_hour_price, max_hour_price)
     end
     
-    min_day_price = "0" if min_day_price.blank?
- 
-    if min_day_price.present? && max_day_price.present?  
+    if min_day_price.blank? && max_day_price.present?
+      min_day_price = 0
+      parkings = parkings.day_price_between(min_day_price, max_day_price)
+    elsif min_day_price.present? && max_day_price.present?  
       parkings = parkings.day_price_between(min_day_price, max_day_price)
     end
 
