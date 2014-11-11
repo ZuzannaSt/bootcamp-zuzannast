@@ -2,10 +2,10 @@
 
 ferrari:
   model: Ferrari
-  registration_number: 1
+  registration_number: KRK3456
   owner: zuza
 
 maluch:
   model: Maluch
-  registration_number: 2
+  registration_number: KRK6789
   owner: steve

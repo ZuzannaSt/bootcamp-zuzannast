@@ -10,7 +10,8 @@ class CarsTest < ActionDispatch::IntegrationTest
     visit '/cars'
     assert has_content? 'Your registered cars'
     assert has_content? 'Maluch'
-    assert has_content? '2'
+    assert has_content? 'KRK6789'
+    assert has_no_content? 'Ferrari'
   end
 
   test "user opens car details" do
@@ -24,7 +25,7 @@ class CarsTest < ActionDispatch::IntegrationTest
     visit '/cars/new'
     assert has_content? 'New car'
     fill_in 'model', with: 'Mercedes'
-    fill_in 'registration_number', with: '3'
+    fill_in 'registration_number', with: 'KRK1234'
     click_button 'Create Car'
     visit car_path(Car.last)
     assert has_content? 'Mercedes'
