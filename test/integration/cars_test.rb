@@ -13,7 +13,6 @@ class CarsTest < ActionDispatch::IntegrationTest
     first( :link, 'Show' ).click
     assert has_content? 'Maluch'
     assert has_content? 'Steve'
-    puts page.body
   end
 
   test "user adds a new car" do
