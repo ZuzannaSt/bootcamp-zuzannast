@@ -17,13 +17,11 @@ class PersonTest < ActiveSupport::TestCase
     end
 
     test "should display full name" do
-      assert @steve.valid?
-      assert @steve.errors[:first_name].empty?
-      assert @steve.errors[:last_name].empty?
+      assert_equal("Steve Jobs", @steve.full_name)
     end
 
     test "should display only first name" do
       @steve.last_name = nil
-      assert @steve.valid?
+      assert_equal("Steve", @steve.full_name)
     end
 end
