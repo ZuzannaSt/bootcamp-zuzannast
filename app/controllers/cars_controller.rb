@@ -64,10 +64,4 @@ class CarsController < ApplicationController
     def car_params
       params.require(:car).permit(:model, :registration_number)
     end
-
-    def not_found
-      message = "Car with ID #{params[:id]} not found."
-      logger.error message
-      redirect_to cars_path, info: "message"
-    end
 end
