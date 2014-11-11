@@ -6,9 +6,13 @@ class Person < ActiveRecord::Base
 
   def full_name
     if last_name.blank?
-      "#{self.first_name}"
+      self.first_name
     else
       "#{self.first_name} #{self.last_name}"
     end
+  end
+
+  def self.authenticate(email)
+    person = find_by_email(email)
   end
 end
