@@ -12,8 +12,12 @@ class Person < ActiveRecord::Base
     end
   end
 
-  def self.authenticate(email)
+  def self.authenticate(email, password)
     account = Account.find_by_email(email)
-    account.person if account
+    if account && account.password_digest == BCrypt::Engine.hash_secret(password, account.password_digest)
+      account.person
+    else
+      nil
+    end
   end
 end

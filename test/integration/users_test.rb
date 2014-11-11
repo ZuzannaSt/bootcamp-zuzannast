@@ -6,10 +6,7 @@ class UsersTest < ActionDispatch::IntegrationTest
   end
 
   test "user name is displayed after logging" do
-    visit '/parkings'
-    click_link 'Log in'
-    fill_in 'email', with: 'steve@jobs.com'
-    click_button 'Log in'
+    log_in
     assert has_content? 'Steve Jobs'
     assert has_no_link? 'Log in'
   end

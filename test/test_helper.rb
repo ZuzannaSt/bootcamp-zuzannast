@@ -26,6 +26,7 @@ class ActionDispatch::IntegrationTest
     visit '/parkings'
     click_link 'Log in'
     fill_in 'email', with: 'steve@jobs.com'
+    fill_in 'password', with: 'secret123'
     click_button 'Log in'
   end
 end
