@@ -16,8 +16,6 @@ class Person < ActiveRecord::Base
     account = Account.find_by_email(email)
     if account && account.authenticate(password)
       account.person
-    else
-      nil
     end
   end
 end

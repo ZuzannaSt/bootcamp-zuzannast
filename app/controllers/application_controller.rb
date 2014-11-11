@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   def authenticate_person
     unless current_person
       flash[:error] = "You must be logged in to access this section."
+      session[:return_to] = request.original_url if request.get?
       redirect_to new_session_path
     end
   end
