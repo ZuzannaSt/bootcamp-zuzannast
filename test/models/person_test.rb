@@ -15,4 +15,15 @@ class PersonTest < ActiveSupport::TestCase
       assert @steve.invalid?
       assert_not @steve.errors[:first_name].empty?
     end
+
+    test "should display full name" do
+      assert @steve.valid?
+      assert @steve.errors[:first_name].empty?
+      assert @steve.errors[:last_name].empty?
+    end
+
+    test "should display only first name" do
+      @steve.last_name = nil
+      assert @steve.valid?
+    end
 end
