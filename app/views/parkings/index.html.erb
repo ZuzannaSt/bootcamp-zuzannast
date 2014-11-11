@@ -18,7 +18,9 @@
     <td colspan="3"><%= parking.places %></td>
     <td colspan="3"><%= parking.hour_price %></td>
     <td colspan="3"><%= parking.day_price %></td>
-    <td colspan="3"><%= link_to "RENT", new_parking_place_rent_path(parking.id) %>
+    <% if current_person %>
+      <td colspan="3"><%= link_to "RENT", new_parking_place_rent_path(parking.id) %>
+    <% end %>
     <td colspan="3"><%= link_to "Show", parking %></td>
     <td colspan="3"><%= link_to "Edit", edit_parking_path(parking) %></td>
     <td colspan="3"><%= link_to "Remove", parking, method: :delete, data: { confirm: "Are you sure?" } %></td>

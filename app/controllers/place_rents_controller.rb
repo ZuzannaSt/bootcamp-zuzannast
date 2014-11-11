@@ -1,4 +1,6 @@
 class PlaceRentsController < ApplicationController
+  before_action :authenticate_person
+  
   def index
     @places = PlaceRent.all.order(:id)
   end

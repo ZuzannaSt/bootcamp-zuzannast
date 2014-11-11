@@ -12,4 +12,11 @@ class ApplicationController < ActionController::Base
   def current_person
     @current_person ||= Person.find(session[:person_id]) if session[:person_id]
   end
+
+  def authenticate_person
+    unless current_person
+      flash[:error] = "You must be logged in to access this section."
+      redirect_to new_session_path
+    end
+  end
 end

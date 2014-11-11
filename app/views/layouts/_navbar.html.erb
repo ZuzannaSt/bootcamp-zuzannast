@@ -1,13 +1,11 @@
 <nav>
   <ul>
-    <li>
-      <% if current_person %>
-        Logged in as <%= current_person.full_name %>.
-      <% else %>
-        <%= link_to "Log in", new_session_path %>
-      <% end %>
-  </li>
-    <li><%= link_to "Cars", cars_path %></li>
+    <% if current_person %>
+      <li> Logged in as <%= current_person.full_name %>.</li>
+      <li><%= link_to "Cars", cars_path %></li>
+      <li><%= link_to "Rents", place_rents_path %></li>
+    <% else %>
+      <li><%= link_to "Log in", new_session_path %></li>
+    <% end %>  
     <li><%= link_to "Parkings", parkings_path %></li>
-    <li><%= link_to "Rents", place_rents_path %></li>
 </nav>

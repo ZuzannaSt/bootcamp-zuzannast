@@ -1,4 +1,5 @@
 class CarsController < ApplicationController
+  before_action :authenticate_person
   before_action :set_car, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound do |exception|
     redirect_to cars_path, alert: 'Car was not found.'
