@@ -9,7 +9,7 @@
 <body>
 
 <%= render "layouts/navbar" %>
-<%= render "layouts/flash" if !flash.empty? %>
+<%= render "layouts/flash" if flash.present? %>
 <%= yield %>
 
 </body>
