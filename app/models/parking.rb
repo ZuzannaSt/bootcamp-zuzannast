@@ -11,7 +11,7 @@ class Parking < ActiveRecord::Base
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :owner
 
-  scope :public_parkings, -> { where( kind: ["public", "indoor", "outdoor"] ) }
+  scope :public_parkings, -> { where( kind: ["street", "indoor", "outdoor"] ) }
   scope :private_parkings, -> { where( kind: "private" ) }
   scope :day_price_between, -> (min_day_price, max_day_price) { where( "day_price > ? and day_price < ?", min_day_price, max_day_price ) }
   scope :hour_price_between, -> (min_hour_price, max_hour_price) { where( "hour_price > ? and hour_price < ?", min_hour_price, max_hour_price ) }
