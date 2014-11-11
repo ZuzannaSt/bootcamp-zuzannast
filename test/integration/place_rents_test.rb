@@ -18,16 +18,8 @@ class PlaceRentsTest < ActionDispatch::IntegrationTest
     visit '/parkings'
     first( :link, 'RENT').click
     assert has_content? 'New place rent'
-    select '2014', from: 'place_rent_start_date_1i'
-    select 'November', from: 'place_rent_start_date_2i'
-    select '11', from: 'place_rent_start_date_3i'
-    select '11', from: 'place_rent_start_date_4i'
-    select '30', from: 'place_rent_start_date_5i'
-    select '2014', from: 'place_rent_end_date_1i'
-    select 'November', from: 'place_rent_end_date_2i'
-    select '11', from: 'place_rent_end_date_3i'
-    select '15', from: 'place_rent_end_date_4i'
-    select '30', from: 'place_rent_end_date_5i'
+    select_date_and_time(DateTime.now, from: 'place_rent_start_date')
+    select_date_and_time(DateTime.now + 2.days, from: 'place_rent_end_date')
     select 'Maluch', from: 'place_rent_car_id'
     click_button 'Create Place rent'
     visit place_rent_path(PlaceRent.last)
