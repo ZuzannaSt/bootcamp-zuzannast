@@ -13,7 +13,9 @@ class PlaceRentsTest < ActionDispatch::IntegrationTest
 
   test "user opens place_rents details" do
     visit '/place_rents'
-    first( :link, 'Show' ).click
+    within "#place_rent_#{place_rents(:hour).id}" do
+      click_link 'Show'
+    end
     assert has_content? 'Place rent'
     assert has_selector? 'td', text: 'Maluch', visible: true
     assert has_link? '<<< Back'
@@ -27,7 +29,6 @@ class PlaceRentsTest < ActionDispatch::IntegrationTest
     select_date_and_time(DateTime.now + 2.days, from: 'place_rent_end_date')
     select 'Maluch', from: 'place_rent_car_id'
     click_button 'Create Place rent'
-    visit place_rent_path(PlaceRent.last)
     assert has_content? 'Maluch'
   end
 end
