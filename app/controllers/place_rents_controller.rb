@@ -6,7 +6,7 @@ class PlaceRentsController < ApplicationController
   end
 
   def show
-    @place = PlaceRent.find(params[:id])
+    @place = PlaceRent.find_by(params[:identifier])
   end
 
   def new
@@ -26,6 +26,6 @@ class PlaceRentsController < ApplicationController
 
   private
   def place_rent_params
-    params.require(:place_rent).permit(:start_date, :end_date, :car_id) 
+    params.require(:place_rent).permit(:start_date, :end_date, :car_id, :identifier) 
   end
 end
