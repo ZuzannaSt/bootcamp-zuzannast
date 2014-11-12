@@ -1,7 +1,7 @@
 class ParkingsController < ApplicationController
   before_filter :parking, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    redirect_to parkings_path, alert: 'Parking was not found.'
+    redirect_to parkings_path, alert: t(:parking_not_found)
   end
 
 
@@ -25,7 +25,7 @@ class ParkingsController < ApplicationController
     @parking = Parking.new(parking_params)
 
     if @parking.save
-      redirect_to @parking, notice: 'Parking was successfully created.'
+      redirect_to @parking, notice: t(:parking_created)
     else
       render action: 'new'
     end
@@ -33,7 +33,7 @@ class ParkingsController < ApplicationController
 
   def update
     if @parking.update(parking_params)
-      redirect_to @parking, notice: 'Parking was successfully updated.'
+      redirect_to @parking, notice: t(:parking_updated)
     else
       render action: 'edit'
     end
@@ -41,7 +41,7 @@ class ParkingsController < ApplicationController
 
   def destroy
     @parking.destroy
-    redirect_to parkings_url, notice: 'Parking was successfully destroyed'
+    redirect_to parkings_url, notice: t(:parking_destroyed)
   end
 
   private
