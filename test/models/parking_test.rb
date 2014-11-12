@@ -3,9 +3,9 @@ require 'test_helper'
 class ParkingTest < ActiveSupport::TestCase
   def setup
     @outdoor = parking(:outdoor)
-    @end_date = @outdoor.set_end_date
     @public = parking(:public)
     @private = parking(:private)
+    @year = place_rents(:year)
   end
 
   test "should save parking" do
@@ -52,7 +52,8 @@ class ParkingTest < ActiveSupport::TestCase
   end
 
   test "should set end_date before destroying" do
-    assert_in_delta(Time.now, @end_date, delta = 0.001)
+    @outdoor.destroy
+    assert_in_delta(Time.now, @year.reload.end_date, 0.01)
   end
 
   test "should get a list of all public parkings" do

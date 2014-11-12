@@ -4,6 +4,12 @@ class PlaceRent < ActiveRecord::Base
   belongs_to :parking
   belongs_to :car
 
+  scope :ongoing, -> { where("end_date > ?", Time.now )}
+
+  def finish
+    update_attribute(:end_date,Time.now)
+  end
+
   def time_spent
     (end_date - start_date).to_i / 3600
   end

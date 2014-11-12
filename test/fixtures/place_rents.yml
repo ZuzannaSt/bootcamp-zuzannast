@@ -11,3 +11,8 @@ day:
   end_date: 2014-11-06 15:50:27
   parking: private
   car: maluch
+
+year:
+  start_date: 2014-11-05 10:50:27
+  end_date: <%= 1.year.from_now %>
+  parking: outdoor

@@ -18,10 +18,8 @@ class Parking < ActiveRecord::Base
   scope :in_city, -> (city) { where( "city = ?", city ).joins(:address) }
 
   def set_end_date
-    place_rents.each do |place|
-      if place.end_date > Time.now
-        place.end_date = Time.now
-      end
+    place_rents.ongoing.each do |place|
+       place.finish
     end
   end
 
