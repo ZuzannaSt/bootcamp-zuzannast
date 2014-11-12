@@ -13,12 +13,11 @@ class PlaceRentsTest < ActionDispatch::IntegrationTest
 
   test "user opens place_rents details" do
     visit '/place_rents'
-    puts page.body
     within "#place_rent_#{place_rents(:hour).id}" do
       click_link 'Show'
     end
     assert has_content? 'Place rent'
-    assert has_selector? 'td', text: 'Maluch', visible: true
+    assert has_selector? 'td', text: 'Ferrari', visible: true
     assert has_link? '<<< Back'
   end
 

@@ -6,7 +6,7 @@ class PlaceRentsController < ApplicationController
   end
 
   def show
-    @place = PlaceRent.find_by(params[:identifier])
+    @place = PlaceRent.find_by(identifier: params[:id])
   end
 
   def new
