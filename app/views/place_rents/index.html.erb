@@ -21,7 +21,7 @@
       <td colspan="3"><%= link_to place.car.try(:model), place.car %></td>
       <td colspan="3"><%= place.start_date %></td>
       <td colspan="3"><%= place.end_date %></td>
-      <td colspan="3"><%= link_to "Show", place %></td>
+      <td colspan="3"><%= link_to "Show", place_rent_path(place) %></td>
     </tr>
     <% end %>
   </tbody>
