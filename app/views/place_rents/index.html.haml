@@ -9,7 +9,7 @@
       %th{:colspan => "3"}
   %tbody
     - @places.each do |place|
-      %tr
+      %tr{id: "place_rent_#{place.id}"}
         %td{:colspan => "3"}
           - if place.parking && place.parking.address
             = link_to place.parking.address.city, place.parking

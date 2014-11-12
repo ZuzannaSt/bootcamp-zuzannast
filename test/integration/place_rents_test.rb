@@ -13,6 +13,7 @@ class PlaceRentsTest < ActionDispatch::IntegrationTest
 
   test "user opens place_rents details" do
     visit '/place_rents'
+    puts page.body
     within "#place_rent_#{place_rents(:hour).id}" do
       click_link 'Show'
     end
