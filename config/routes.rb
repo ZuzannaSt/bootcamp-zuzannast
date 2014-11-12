@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :accounts, only: [:new, :create]
-  resource :session
+  get 'register', to: 'accounts#new'
+  post 'register', to: 'accounts#create'
+
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+
+  resource :session, only: [:destroy]
+
   resources :place_rents, only: [:index, :show]
   resources :cars
   resources :parkings do
