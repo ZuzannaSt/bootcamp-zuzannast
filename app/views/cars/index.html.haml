@@ -1,0 +1,19 @@
+%h1 Your registered cars
+%table
+  %thead
+    %tr
+      %th{:colspan => "3"} Car model
+      %th{:colspan => "3"} Number
+      %th{:colspan => "3"}
+      %th{:colspan => "3"}
+      %th{:colspan => "3"}
+  %tbody
+    - @cars.each do |car|
+      %tr
+        %td{:colspan => "3"}= car.model
+        %td{:colspan => "3"}= car.registration_number
+        %td{:colspan => "3"}= link_to 'Show', car
+        %td{:colspan => "3"}= link_to 'Edit', edit_car_path(car)
+        %td{:colspan => "3"}= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Car', new_car_path
