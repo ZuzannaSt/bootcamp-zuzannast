@@ -15,7 +15,6 @@ class PlaceRentsTest < ActionDispatch::IntegrationTest
     visit '/place_rents'
     first( :link, 'Show' ).click
     assert has_content? 'Place rent'
-    puts page.body
     assert has_selector? 'td', text: 'Maluch', visible: true
     assert has_link? '<<< Back'
   end
@@ -29,7 +28,6 @@ class PlaceRentsTest < ActionDispatch::IntegrationTest
     select 'Maluch', from: 'place_rent_car_id'
     click_button 'Create Place rent'
     visit place_rent_path(PlaceRent.last)
-    puts page.body
     assert has_content? 'Maluch'
   end
 end

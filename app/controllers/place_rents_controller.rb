@@ -2,7 +2,7 @@ class PlaceRentsController < ApplicationController
   before_action :authenticate_person
   
   def index
-    @places = PlaceRent.all.order(:id)
+    @places = PlaceRent.all.order(:start_date)
   end
 
   def show
