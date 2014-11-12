@@ -1,0 +1,40 @@
+<%= form_for @account do |f| %>
+ <% if @account.errors.any? %>
+    <ul>
+      <% @account.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= f.fields_for :person do |p| %>
+    <p>
+      <b>First name </b><br>
+      <%= p.text_field :first_name, id: 'first_name' %>
+    </p>
+    
+    <p>
+      <b>Last name</b><br>
+      <%= p.text_field :last_name, id: 'last_name' %>
+    </p>
+  <% end %>
+
+  <p>
+    <b>Email</b><br>
+    <%= f.text_field :email, id: 'email' %>
+  </p>
+  
+  <p>
+    <b>Password</b><br>
+    <%= f.password_field :password, id: 'password' %>
+  </p>
+  
+  <p>
+    <b>Confirm password</b><br>
+    <%= f.password_field :password_confirmation, id: 'password_confirmation' %>
+  </p>
+
+  <p>
+    <%= f.submit 'Submit', id: 'submit' %>
+  </p>
+<% end %>

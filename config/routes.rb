@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :accounts, only: [:new, :create]
   resource :session
   resources :place_rents, only: [:index, :show]
   resources :cars
