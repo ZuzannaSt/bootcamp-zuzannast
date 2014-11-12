@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'will_paginate'
 gem 'rails-i18n', '~> 4.0.3'
 gem 'haml'
 gem 'capybara'

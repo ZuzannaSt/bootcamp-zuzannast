@@ -4,9 +4,8 @@ class ParkingsController < ApplicationController
     redirect_to parkings_path, alert: t(:parking_not_found)
   end
 
-
   def index
-    @parkings = Parking.search(params).order(:id)
+    @parkings = Parking.search(params).order(:id).paginate(:page => params[:page], :per_page => 5)
   end
 
   def show
