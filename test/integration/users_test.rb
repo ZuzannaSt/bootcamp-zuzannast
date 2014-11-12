@@ -51,4 +51,46 @@ class UsersTest < ActionDispatch::IntegrationTest
     click_button 'Log in'
     assert has_content? 'Listing rents'
   end
+
+  test "user registers" do
+    visit '/parkings'
+    click_link 'Sign in'
+    assert has_content? 'New account'
+    fill_in 'first_name', with: 'Tim'
+    fill_in 'last_name', with: 'Cook'
+    fill_in 'email', with: 'tim@cook.com'
+    fill_in 'password', with: 'cooking'
+    fill_in 'password_confirmation', with: 'cooking'
+    click_button 'Submit'
+    assert has_content? 'Account was successfully created.'
+  end
+
+  test "user enters wrong confirmation password" do
+    visit '/parkings'
+    click_link 'Sign in'
+    assert has_content? 'New account'
+    fill_in 'password', with: 'cooking'
+    fill_in 'password_confirmation', with: 'booking'
+    click_button 'Submit'
+    assert has_content? "Password confirmation doesn't match Password"
+  end
+
+  test "user doesnt enters data to registration fields" do
+    visit '/parkings'
+    click_link 'Sign in'
+    assert has_content? 'New account'
+    click_button 'Submit'
+    assert has_content? "Person first name can't be blank"
+    assert has_content? "Email can't be blank"
+    assert has_content? "Password can't be blank"
+  end 
+
+  test "user enters email that is already registered" do
+    visit '/parkings'
+    click_link 'Sign in'
+    assert has_content? 'New account'
+    fill_in 'email', with: 'steve@jobs.com'
+    click_button 'Submit'
+    assert has_content? 'Email has already been taken'
+  end
 end
