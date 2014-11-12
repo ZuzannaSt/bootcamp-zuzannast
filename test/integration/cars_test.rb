@@ -27,7 +27,6 @@ class CarsTest < ActionDispatch::IntegrationTest
     fill_in 'model', with: 'Mercedes'
     fill_in 'registration_number', with: 'KRK1234'
     click_button 'Create Car'
-    visit car_path(Car.last)
     assert has_content? 'Mercedes'
   end
 

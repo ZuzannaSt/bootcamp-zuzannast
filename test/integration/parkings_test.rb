@@ -25,7 +25,6 @@ class ParkingsTest < ActionDispatch::IntegrationTest
     fill_in 'hour_price', with: '2.00'
     fill_in 'day_price', with: '12.00'
     click_button 'Submit'
-    visit parking_path(Parking.last)
     assert has_content? 'Komandosow'
   end
 
