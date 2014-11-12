@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+scope "(:locale)", locale: /en|pl/ do
+
   get 'register', to: 'accounts#new'
   post 'register', to: 'accounts#create'
 
@@ -15,6 +17,8 @@ Rails.application.routes.draw do
   end
 
   root 'parkings#index'
+
+end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

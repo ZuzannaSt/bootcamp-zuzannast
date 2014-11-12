@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :page_title
   helper_method :current_person
+  before_action :set_locale
 
   def page_title
     controller_name
@@ -19,5 +20,10 @@ class ApplicationController < ActionController::Base
       session[:return_to] = request.original_url if request.get?
       redirect_to login_path
     end
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale  
+    self.default_url_options = { locale: I18n.locale }
   end
 end
