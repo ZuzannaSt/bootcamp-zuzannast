@@ -1,6 +1,6 @@
 pl:
-  hello: "Witaj świecie"
-  parking_created: "Parking został pomyślnie utworzony."
-  parking_updated: "Parking został pomyślnie zaktualizowany."
-  parking_destroyed: "Parking został pomyślnie usunięty."
-  parking_not_found: "Nie znaleziono parkingu."
+  hello: Witaj świecie
+  parking_created: Parking został pomyślnie utworzony.
+  parking_updated: Parking został pomyślnie zaktualizowany.
+  parking_destroyed: Parking został pomyślnie usunięty.
+  parking_not_found: Nie znaleziono parkingu.

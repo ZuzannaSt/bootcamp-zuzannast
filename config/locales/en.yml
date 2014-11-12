@@ -20,8 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-  parking_created: "Parking was successfully created."
-  parking_updateg: "Parking was successfully updated."
-  parking_destroyed: "Parking was successfully destroyed."
-  parking_not_found: "Parking was not found."
+  hello: Hello world
+  parking_created: Parking was successfully created.
+  parking_updateg: Parking was successfully updated.
+  parking_destroyed: Parking was successfully destroyed.
+  parking_not_found: Parking was not found.
