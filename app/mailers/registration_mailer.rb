@@ -9,9 +9,9 @@ class RegistrationMailer < ActionMailer::Base
 
   def default_url_options
     if Rails.env.production?
-      { :host => "bookpark.dev"}
+      { :host => "bootcamp-zustmust.herokuapp.com" }
     else
-      {:host => "bookpark.dev"}
+      { :host => "bookpark.dev" }
     end
   end
 end
