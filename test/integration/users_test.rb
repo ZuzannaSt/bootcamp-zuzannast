@@ -103,7 +103,6 @@ class UsersTest < ActionDispatch::IntegrationTest
     fill_in 'password', with: 'cooking'
     fill_in 'password_confirmation', with: 'cooking'
     click_button 'Submit'
-    assert_not ActionMailer::Base.deliveries.empty?
     email = ActionMailer::Base.deliveries.last
     assert_equal ['tim@cook.com'], email.to
     assert_equal ['tim@cook.com'], email.to
