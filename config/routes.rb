@@ -1,24 +1,23 @@
 Rails.application.routes.draw do
 
-scope "(:locale)", locale: /en|pl/ do
+  scope "(:locale)", locale: /en|pl/ do
 
-  get 'register', to: 'accounts#new'
-  post 'register', to: 'accounts#create'
+    get 'register', to: 'accounts#new'
+    post 'register', to: 'accounts#create'
 
-  get 'login', to: 'sessions#new'
-  post 'login', to: 'sessions#create'
+    get 'login', to: 'sessions#new'
+    post 'login', to: 'sessions#create'
 
-  resource :session, only: [:destroy]
+    resource :session, only: [:destroy]
 
-  resources :place_rents, only: [:index, :show]
-  resources :cars
-  resources :parkings do
-    resources :place_rents, only: [:new, :create]
+    resources :place_rents, only: [:index, :show]
+    resources :cars
+    resources :parkings do
+      resources :place_rents, only: [:new, :create]
+    end
+
+    root 'parkings#index'
   end
-
-  root 'parkings#index'
-
-end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
