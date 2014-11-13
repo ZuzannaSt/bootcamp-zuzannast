@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= humanized_page_title %></title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title><%= humanized_page_title %></title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<%= render "layouts/navbar" %>
-<%= render "layouts/flash" if flash.present? %>
-<%= yield %>
+    <%= render "layouts/navbar" %>
 
-</body>
+    <%= render "layouts/flash" if flash.present? %>
+
+    <% unless @no_header %>
+      <%= render "layouts/header" %>
+    <% end %>
+
+    <%= yield %>
+
+  </body>
 </html>

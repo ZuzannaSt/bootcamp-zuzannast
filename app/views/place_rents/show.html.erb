@@ -1,34 +1,34 @@
-<h1>Place rent</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3">Parking</th>
-      <th colspan="3">Car</th>
-      <th colspan="3">Start date</th>
-      <th colspan="3">End date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td colspan="3">
-        <% if @place.parking && @place.parking.address %>
-          <%= link_to @place.parking.address.city, @place.parking %>
-        <% else %>
-          No city
-        <% end %>
-      </td>
-      <td colspan="3">
-        <% if @place.car && @place.car.model %>
-          <%= link_to @place.car.model, @place.car %>
-        <% else %>
-          No model
-        <% end %>
-      </td>
-      <td colspan="3"><%= @place.start_date %></td>
-      <td colspan="3"><%= @place.end_date %></td>
-    </tr>
-  </tbody>
-</table>
-<br>
-<%= link_to "<<< Back", place_rents_path %>
+<div class = "container">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th colspan="3">Parking</th>
+        <th colspan="3">Car</th>
+        <th colspan="3">Start date</th>
+        <th colspan="3">End date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="3">
+          <% if @place.parking && @place.parking.address %>
+            <%= link_to @place.parking.address.city, @place.parking %>
+          <% else %>
+            No city
+          <% end %>
+        </td>
+        <td colspan="3">
+          <% if @place.car && @place.car.model %>
+            <%= link_to @place.car.model, @place.car %>
+          <% else %>
+            No model
+          <% end %>
+        </td>
+        <td colspan="3"><%= @place.start_date %></td>
+        <td colspan="3"><%= @place.end_date %></td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to "<<< Back", place_rents_path %>
+</div>

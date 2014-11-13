@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    @no_header = true
   end
 
   def create

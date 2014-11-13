@@ -2,6 +2,7 @@ class AccountsController < ApplicationController
   def new 
     @account = Account.new
     @account.build_person
+    @no_header = true
   end
 
   def create

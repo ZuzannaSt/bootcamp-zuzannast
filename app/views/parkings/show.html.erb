@@ -1,27 +1,27 @@
-<h1> Show parking </h1>
+<div class = "container">
+    <table class="table tabler-bordered table-hover">
+      <tr>
+        <th>City</th>
+        <th>Zip code</th>
+        <th>Street</th>
+        <th>Owner</th>
+        <th>Kind</th>
+        <th>Places</th>
+        <th>Hour price</th>
+        <th>Day price</th>
+      </tr>
 
-<table>
-  <tr>
-    <th>City</th>
-    <th>Zip code</th>
-    <th>Street</th>
-    <th>Owner</th>
-    <th>Kind</th>
-    <th>Places</th>
-    <th>Hour price</th>
-    <th>Day price</th>
-  </tr>
+      <tr>
+        <td><%= @parking.address.try(:city) %></td>
+        <td><%= @parking.address.try(:zip_code) %></td>
+        <td><%= @parking.address.try(:street) %></td>
+        <td><%= @parking.owner.try(:last_name) %></td>
+        <td><%= @parking.kind %></td>
+        <td><%= @parking.places %></td>
+        <td><%= @parking.hour_price %></td>
+        <td><%= @parking.day_price %></td>
+      </tr>
+    </table>
 
-  <tr>
-    <td><%= @parking.address.try(:city) %></td>
-    <td><%= @parking.address.try(:zip_code) %></td>
-    <td><%= @parking.address.try(:street) %></td>
-    <td><%= @parking.owner.try(:last_name) %></td>
-    <td><%= @parking.kind %></td>
-    <td><%= @parking.places %></td>
-    <td><%= @parking.hour_price %></td>
-    <td><%= @parking.day_price %></td>
-  </tr>
-</table>
-
-<%= link_to "<<< Back", parkings_path %>
+    <%= link_to "<<< Back", parkings_path %>
+</div>
