@@ -93,4 +93,20 @@ class UsersTest < ActionDispatch::IntegrationTest
     click_button 'Submit'
     assert has_content? 'Email has already been taken'
   end
+
+  test "user receives an email when he registers" do
+    visit '/parkings'
+    click_link 'Sign in'
+    fill_in 'first_name', with: 'Tim'
+    fill_in 'last_name', with: 'Cook'
+    fill_in 'email', with: 'tim@cook.com'
+    fill_in 'password', with: 'cooking'
+    fill_in 'password_confirmation', with: 'cooking'
+    click_button 'Submit'
+    assert_not ActionMailer::Base.deliveries.empty?
+    email = ActionMailer::Base.deliveries.last
+    assert_equal ['tim@cook.com'], email.to
+    assert_equal ['tim@cook.com'], email.to
+    assert_equal 'Welcome to Bookparking', email.subject
+  end
 end
