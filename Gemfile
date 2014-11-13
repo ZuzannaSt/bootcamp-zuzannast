@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-rails', :groups => [:development, :test]
+gem 'dragonfly-s3_data_store'
+gem 'dragonfly'
 gem 'will_paginate-bootstrap'
 gem 'bootstrap-sass'
 gem 'rails-i18n', '~> 4.0.3'

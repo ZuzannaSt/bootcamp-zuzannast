@@ -17,7 +17,7 @@ Rails.application.configure do
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
-  # config.action_dispatch.rack_cache = true
+  config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = false
@@ -81,8 +81,8 @@ Rails.application.configure do
     :address        => 'smtp.sendgrid.net',
     :port           => '587',
     :authentication => :plain,
-    :user_name      => ENV['app31372956@heroku.com'],
-    :password       => ENV['lodjpl2g'],
+    :user_name      => ENV['SMTP_USER_NAME'],
+    :password       => ENV['SMTP_PASSWORD'],
     :domain         => 'heroku.com',
     :enable_starttls_auto => true
   }
