@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+gem 'bootstrap-sass'
 gem 'rails-i18n', '~> 4.0.3'
 gem 'haml'
 gem 'capybara'
@@ -17,7 +18,7 @@ group :production do
   gem 'newrelic_rpm'
 end
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+ gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
