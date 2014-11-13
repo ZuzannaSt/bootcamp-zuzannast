@@ -9,14 +9,14 @@ class ParkingsTest < ActionDispatch::IntegrationTest
   test "user opens parking details" do
     visit '/parkings'
     first( :link, 'Show' ).click
-    assert has_content? 'Show parking'
+    assert has_content? 'show'
     assert has_selector? 'td', text: 'Krakow', visible: true
     assert has_link? '<<< Back'
   end
 
   test "user adds a new parking" do
     visit '/parkings/new'
-    assert has_content? 'New parking'
+    assert has_content? 'Parkings new'
     fill_in 'city', with: 'Krakow'
     fill_in 'zip_code', with: '30-334'
     fill_in 'street', with: 'Komandosow'
@@ -31,7 +31,7 @@ class ParkingsTest < ActionDispatch::IntegrationTest
   test "user edits a parking" do
     visit '/parkings'
     first( :link, 'Edit' ).click
-    assert has_content? 'Edit parking'
+    assert has_content? 'Parkings edit'
     assert has_field? 'street', with: 'Komandosow'
     fill_in 'street', with: 'Mickiewicza'
     click_button 'Submit'

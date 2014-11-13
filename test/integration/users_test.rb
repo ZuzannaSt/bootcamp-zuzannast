@@ -28,7 +28,7 @@ class UsersTest < ActionDispatch::IntegrationTest
 
   test "user logs in directly from main page" do
     log_in
-    assert has_content? 'Parkings'
+    assert has_content? 'Parkings index'
   end
 
   test "user logs in after redirection from cars" do
@@ -38,7 +38,7 @@ class UsersTest < ActionDispatch::IntegrationTest
     fill_in 'email', with: 'steve@jobs.com'
     fill_in 'password', with: 'secret123'
     click_button 'Log in'
-    assert has_content? 'Your registered cars'
+    assert has_content? 'Cars index'
     assert has_content? 'Maluch'
   end
 
@@ -49,13 +49,13 @@ class UsersTest < ActionDispatch::IntegrationTest
     fill_in 'email', with: 'steve@jobs.com'
     fill_in 'password', with: 'secret123'
     click_button 'Log in'
-    assert has_content? 'Listing rents'
+    assert has_content? 'Place_rents index'
   end
 
   test "user registers" do
     visit '/parkings'
     click_link 'Sign in'
-    assert has_content? 'New account'
+    assert has_content? 'Create account'
     fill_in 'first_name', with: 'Tim'
     fill_in 'last_name', with: 'Cook'
     fill_in 'email', with: 'tim@cook.com'
@@ -68,7 +68,7 @@ class UsersTest < ActionDispatch::IntegrationTest
   test "user enters wrong confirmation password" do
     visit '/parkings'
     click_link 'Sign in'
-    assert has_content? 'New account'
+    assert has_content? 'Create account'
     fill_in 'password', with: 'cooking'
     fill_in 'password_confirmation', with: 'booking'
     click_button 'Submit'
@@ -78,7 +78,7 @@ class UsersTest < ActionDispatch::IntegrationTest
   test "user doesnt enters data to registration fields" do
     visit '/parkings'
     click_link 'Sign in'
-    assert has_content? 'New account'
+    assert has_content? 'Create account'
     click_button 'Submit'
     assert has_content? "Person first name can't be blank"
     assert has_content? "Email can't be blank"
@@ -88,7 +88,7 @@ class UsersTest < ActionDispatch::IntegrationTest
   test "user enters email that is already registered" do
     visit '/parkings'
     click_link 'Sign in'
-    assert has_content? 'New account'
+    assert has_content? 'Create account'
     fill_in 'email', with: 'steve@jobs.com'
     click_button 'Submit'
     assert has_content? 'Email has already been taken'
