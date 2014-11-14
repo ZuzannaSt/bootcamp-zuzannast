@@ -4,6 +4,7 @@ class Person < ActiveRecord::Base
   has_many :parkings, foreign_key: "owner_id"
   has_many :cars, foreign_key: "owner_id"
   has_one :account
+  has_one :facebook_account
 
   def full_name
     if last_name.blank?
