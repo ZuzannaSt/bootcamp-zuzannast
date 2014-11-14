@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113133656) do
+ActiveRecord::Schema.define(version: 20141114124241) do
 
   create_table "accounts", force: true do |t|
     t.string   "email"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 20141113133656) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_uid"
+  end
+
+  create_table "facebook_accounts", force: true do |t|
+    t.string   "uid"
+    t.string   "oath_token"
+    t.datetime "oauth_expires_at"
+    t.integer  "person_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "provider"
   end
 
   create_table "parkings", force: true do |t|
