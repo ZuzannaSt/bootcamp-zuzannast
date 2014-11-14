@@ -4,3 +4,8 @@ pl:
   parking_updated: Parking został pomyślnie zaktualizowany.
   parking_destroyed: Parking został pomyślnie usunięty.
   parking_not_found: Nie znaleziono parkingu.
+
+  will_paginate:
+    page_gap: "&hellip;"
+    previous_label: "Poprzednia"
+    next_label: "Następna"

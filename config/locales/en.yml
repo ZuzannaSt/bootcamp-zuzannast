@@ -25,3 +25,8 @@ en:
   parking_updateg: Parking was successfully updated.
   parking_destroyed: Parking was successfully destroyed.
   parking_not_found: Parking was not found.
+
+  will_paginate:
+    page_gap: "&hellip;"
+    previous_label: "Previous"
+    next_label: "Next"
