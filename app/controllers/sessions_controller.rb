@@ -20,8 +20,13 @@ class SessionsController < ApplicationController
     redirect_to parkings_path, :notice => "Logged out!"
   end
 
+  def failure
+    redirect_to parkings_path
+    flash.now.alert = "Authentication failed."
+  end
+
   private
   def return_to_path
-    session.delete(:return_to) || root_path 
+    session.delete(:return_to) || root_path
   end
 end
