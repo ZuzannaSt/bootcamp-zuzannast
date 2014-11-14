@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     person = Person.authenticate(params[:email], params[:password])
     if person
       session[:person_id] = person.id
-      redirect_to return_to_path, :notice => "Logged in!"
+      redirect_to return_to_path, notice: "Logged in!"
     else
       flash.now.alert = "Invalid email or password"
       render "new"
@@ -17,12 +17,11 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:person_id] = nil
-    redirect_to parkings_path, :notice => "Logged out!"
+    redirect_to parkings_path, notice: "Logged out!"
   end
 
   def failure
-    redirect_to parkings_path
-    flash.now.alert = "Authentication failed."
+    redirect_to parkings_path, alert: "Authentication failed."
   end
 
   private
