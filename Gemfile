@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'omniauth-facebook'
 gem 'rack-cache'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'dragonfly-s3_data_store'
