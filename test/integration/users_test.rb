@@ -54,7 +54,7 @@ class UsersTest < ActionDispatch::IntegrationTest
 
   test "user registers" do
     visit '/parkings'
-    click_link 'Sign in'
+    click_link 'Sign up'
     assert has_content? 'Create account'
     fill_in 'first_name', with: 'Tim'
     fill_in 'last_name', with: 'Cook'
@@ -67,7 +67,7 @@ class UsersTest < ActionDispatch::IntegrationTest
 
   test "user enters wrong confirmation password" do
     visit '/parkings'
-    click_link 'Sign in'
+    click_link 'Sign up'
     assert has_content? 'Create account'
     fill_in 'password', with: 'cooking'
     fill_in 'password_confirmation', with: 'booking'
@@ -77,17 +77,17 @@ class UsersTest < ActionDispatch::IntegrationTest
 
   test "user doesnt enters data to registration fields" do
     visit '/parkings'
-    click_link 'Sign in'
+    click_link 'Sign up'
     assert has_content? 'Create account'
     click_button 'Submit'
     assert has_content? "Person first name can't be blank"
     assert has_content? "Email can't be blank"
     assert has_content? "Password can't be blank"
-  end 
+  end
 
   test "user enters email that is already registered" do
     visit '/parkings'
-    click_link 'Sign in'
+    click_link 'Sign up'
     assert has_content? 'Create account'
     fill_in 'email', with: 'steve@jobs.com'
     click_button 'Submit'
@@ -96,7 +96,7 @@ class UsersTest < ActionDispatch::IntegrationTest
 
   test "user receives an email when he registers" do
     visit '/parkings'
-    click_link 'Sign in'
+    click_link 'Sign up'
     fill_in 'first_name', with: 'Tim'
     fill_in 'last_name', with: 'Cook'
     fill_in 'email', with: 'tim@cook.com'
