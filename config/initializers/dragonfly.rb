@@ -10,7 +10,7 @@ Dragonfly.app.configure do
 
   datastore :s3,
     bucket_name: ENV['S3_BUCKET_NAME'],
-    access_key_id: ENV['AWS_ACCESS_KEY'],
+    access_key_id: ENV['AWS_ACCESS_KEY_ID'],
     secret_access_key: ENV['AWS_SECRET_KEY']
 end
 
