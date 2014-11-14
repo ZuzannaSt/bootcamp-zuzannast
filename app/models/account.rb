@@ -9,9 +9,7 @@ class Account < ActiveRecord::Base
 
   def self.authenticate(email, password)
     account = Account.find_by_email(email)
-    if account && account.authenticate(password)
-      account.person
-    end
+    account.authenticate(password) if account
   end
 end
 

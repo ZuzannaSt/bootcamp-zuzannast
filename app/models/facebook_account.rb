@@ -10,8 +10,6 @@ class FacebookAccount < ActiveRecord::Base
       facebook_account.provider = auth.provider
       facebook_account.uid = auth.uid
       facebook_account.build_person(first_name: auth.info.name)
-
-      facebook_account.save!
     end
   end
 
