@@ -5,7 +5,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    person = Person.authenticate(params[:email], params[:password])
+    if auth_hash.present? && auth_hash.has_key?(:uid)
+      person = FacebookAccount.find_or_create_for_facebook(auth_hash).person
+    else
+      person = Account.authenticate(params[:email], params[:password])
+    end
+
     if person
       session[:person_id] = person.id
       redirect_to return_to_path, notice: "Logged in!"
@@ -27,5 +32,9 @@ class SessionsController < ApplicationController
   private
   def return_to_path
     session.delete(:return_to) || root_path
+  end
+
+  def auth_hash
+    request.env["omniauth.auth"]
   end
 end

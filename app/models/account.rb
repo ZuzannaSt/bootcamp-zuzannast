@@ -6,5 +6,12 @@ class Account < ActiveRecord::Base
   belongs_to :person
 
   accepts_nested_attributes_for :person
+
+  def self.authenticate(email, password)
+    account = Account.find_by_email(email)
+    if account && account.authenticate(password)
+      account.person
+    end
+  end
 end
 

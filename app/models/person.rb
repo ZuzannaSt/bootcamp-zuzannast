@@ -13,11 +13,4 @@ class Person < ActiveRecord::Base
       "#{self.first_name} #{self.last_name}"
     end
   end
-
-  def self.authenticate(email, password)
-    account = Account.find_by_email(email)
-    if account && account.authenticate(password)
-      account.person
-    end
-  end
 end
