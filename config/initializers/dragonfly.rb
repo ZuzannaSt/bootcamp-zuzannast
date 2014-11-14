@@ -9,7 +9,7 @@ Dragonfly.app.configure do
   url_format "/media/:job/:name"
 
   datastore :s3,
-    bucket_name: ENV['AWS_USER_NAME'],
+    bucket_name: ENV['AWS_BUCKET_NAME'],
     access_key_id: ENV['AWS_ACCESS_KEY'],
     secret_access_key: ENV['AWS_SECRET_KEY']
 end
