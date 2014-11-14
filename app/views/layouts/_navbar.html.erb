@@ -8,8 +8,9 @@
         <li><%= link_to "Rents", place_rents_path %></li>
       <% else %>
         <li><%= link_to "Log in", login_path %></li>
-        <li><%= link_to "Sign in", register_path %></li>
-      <% end %>  
+        <li><%= link_to "Log in with Facebook", "/auth/facebook" %></li>
+        <li><%= link_to "Sign up", register_path %></li>
+      <% end %>
       <li><%= link_to "Parkings", parkings_path %></li>
     </ul>
   </li>
