@@ -15,7 +15,7 @@
         <td><%= @parking.address.try(:city) %></td>
         <td><%= @parking.address.try(:zip_code) %></td>
         <td><%= @parking.address.try(:street) %></td>
-        <td><%= @parking.owner.try(:last_name) %></td>
+        <td><%= @parking.owner.try(:full_name) %></td>
         <td><%= @parking.kind %></td>
         <td><%= @parking.places %></td>
         <td><%= @parking.hour_price %></td>

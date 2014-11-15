@@ -17,7 +17,7 @@ class ParkingsController < ApplicationController
   end
 
   def edit
-    @parking.build_address unless @parking.address 
+    @parking.build_address unless @parking.address
   end
 
   def create
@@ -45,7 +45,7 @@ class ParkingsController < ApplicationController
 
   private
     def parking_params
-      params.require(:parking).permit(:places, :kind, :hour_price, :day_price, address_attributes: [ :zip_code, :street, :city ]) 
+      params.require(:parking).permit(:places, :kind, :hour_price, :day_price, :owner, address_attributes: [ :zip_code, :street, :city ])
     end
 
     def parking
