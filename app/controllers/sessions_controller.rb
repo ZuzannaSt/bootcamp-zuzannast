@@ -5,11 +5,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if auth_hash.present? && auth_hash.has_key?(:uid)
-      person = FacebookAccount.find_or_create_for_facebook(auth_hash)
+    person = if auth_hash.present? && auth_hash.has_key?(:uid)
+      FacebookAccount.find_or_create_for_facebook(auth_hash)
     else
-      person = Account.authenticate(params[:email], params[:password])
-    end
+      Account.authenticate(params[:email], params[:password])
+    end.person
 
     if person
       session[:person_id] = person.id
