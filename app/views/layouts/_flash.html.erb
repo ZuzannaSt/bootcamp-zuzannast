@@ -1,9 +1,5 @@
 <div class = "container">
   <div id="flash">
-    <% flash.keys.each do |k| %>
-      <div class= "<%= k %>">
-        <%= flash[k] %>
-      </div>
-    <% end %>
+   <%= flash_messages %>
   </div>
 </div>
