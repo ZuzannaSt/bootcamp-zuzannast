@@ -2,6 +2,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
+OmniAuth.config.test_mode = true
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
@@ -17,7 +18,7 @@ class ActionDispatch::IntegrationTest
     field = options[:from]
     select date.strftime('%Y'), from: "#{field}_1i" #year
     select date.strftime('%B'), from: "#{field}_2i" #month
-    select date.strftime('%d'), from: "#{field}_3i" #day 
+    select date.strftime('%d'), from: "#{field}_3i" #day
     select date.strftime('%H'), from: "#{field}_4i" #hour
     select date.strftime('%M'), from: "#{field}_5i" #minute
   end
@@ -28,5 +29,15 @@ class ActionDispatch::IntegrationTest
     fill_in 'email', with: 'steve@jobs.com'
     fill_in 'password', with: 'secret123'
     click_button 'Log in'
+  end
+
+  def mock_auto_hash
+    OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+      provider: 'facebook',
+      uid: '123545',
+      info: {
+        name: 'Steve Jobs'
+      }
+    })
   end
 end

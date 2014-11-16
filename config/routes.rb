@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     post 'login', to: 'sessions#create'
 
     get 'auth/:provider/callback', to: 'sessions#create'
-    post 'auth/failure', to: 'sessions#failure'
+    get 'auth/failure', to: 'sessions#failure'
 
     resource :session, only: [:destroy]
 

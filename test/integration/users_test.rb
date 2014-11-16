@@ -3,6 +3,7 @@ require 'test_helper'
 class UsersTest < ActionDispatch::IntegrationTest
   def setup
     Capybara.reset_session!
+
   end
 
   test "user name is displayed after logging" do
@@ -107,5 +108,19 @@ class UsersTest < ActionDispatch::IntegrationTest
     email = ActionMailer::Base.deliveries.last
     assert_equal ['tim@cook.com'], email.to
     assert_equal 'Welcome to Bookparking', email.subject
+  end
+
+  test "user logs in with Facebook" do
+    mock_auto_hash
+    visit '/parkings'
+    click_link 'Log in with Facebook'
+    assert has_content? 'Logged in as Steve Jobs'
+  end
+
+  test "user logs in with Facebook with invalid credentials" do
+    OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
+    visit '/parkings'
+    click_link 'Log in with Facebook'
+    assert has_content? 'Authentication failed.'
   end
 end
