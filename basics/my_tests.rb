@@ -67,6 +67,6 @@ class ArticleTest < Minitest::Test
   end
 
   def test_contain
-    assert @with_author.contain?("Windows")
+    assert_equal true, @with_author.contain?("Windows")
   end
 end
