@@ -28,7 +28,7 @@ class Article
     likes + dislikes
   end
 
-  def long_lines   
+  def long_lines
     body.lines.select { |line| line.length > 80 }
   end
 
@@ -84,27 +84,51 @@ class ArticlesFileSystem
 end
 
 class WebPage
+class NoArticlesFound < StandardError; end
   attr_reader :articles, :articles_file_system
 
   def initialize(dir = '/')
     @articles_file_system = ArticlesFileSystem.new(dir)
     @articles = []
+    load
   end
 
   def load
-    @articles = articles_file_system.load 
+    @articles = articles_file_system.load
   end
 
   def save(articles)
     articles_file_system.save(articles)
   end
-  
-  def new_article(title, body, author)      
+
+  def new_article(title, body, author)
     article = Article.new(title, body, author)
     @articles << article
   end
 
   def longest_articles
     articles.sort_by{ |article| article.length }.reverse
+  end
+
+  def best_articles
+    articles.sort_by{ |article| article.points }.reverse
+  end
+
+  def worst_articles
+    articles.sort_by{ |article| article.points }
+  end
+
+  def best_article
+    raise WebPage::NoArticlesFound if articles.empty?
+    articles.max_by{ |article| article.points }
+  end
+
+  def worst_article
+    raise WebPage::NoArticlesFound if articles.empty?
+    articles.min_by{ |article| article.points }
+  end
+
+  def most_controversial_articles
+    articles.sort_by{ |article| article.votes }.reverse
   end
 end
