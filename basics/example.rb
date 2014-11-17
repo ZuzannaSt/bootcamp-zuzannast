@@ -6,7 +6,6 @@ class Article
     @title = title
     @body = body
     @author = author
-
     @created_at = Time.now
     @likes = 0
     @dislikes = 0
@@ -66,17 +65,6 @@ class ArticlesFileSystem
   def load
     articles = []
     Dir.glob(@dir + "/*.article").each do |file|
-<<<<<<< HEAD
-<<<<<<< HEAD
-      file_name = File.basename(file, ".article")
-      file_name = file_name.gsub('_',' ').capitalize
-      author, likes, dislikes, body = File.read(file).split('||', 4)
-      article = Article.new(file_name, body, author)
-      article.likes = likes.to_i
-      article.dislikes = dislikes.to_i
-=======
-=======
->>>>>>> web_page
       file_name = file.split('.')[0]
       file_name = file_name.split('/')[1]
       file_name = file_name.gsub('_',' ').capitalize
@@ -84,14 +72,8 @@ class ArticlesFileSystem
       likes = likes.to_i
       dislikes = dislikes.to_i
       article = Article.new(file_name, body, author)
-
       likes.times {article.like!}
       dislikes.times {article.dislike!}
-<<<<<<< HEAD
->>>>>>> web_page
-=======
->>>>>>> web_page
-
       articles << article
     end
     articles
@@ -99,35 +81,6 @@ class ArticlesFileSystem
 end
 
 class WebPage
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-attr_reader :articles
-
-  def initialize(dir='/')
-    @dir = dir
-    @articles = []
-  end
-
-  def load
-    article = ArticlesFileSystem.load(@dir) 
-    @articles << article
-  end
-
-
-  def save
-    ArticlesFileSystem.save(@articles)
-  end
-  
-  def new_article(title, body, author)
-        
-    @articles.each do |article|
-      article = article.load
-    end
-
-=======
-=======
->>>>>>> web_page
 class NoArticlesFound < StandardError; end
   attr_reader :articles, :articles_file_system
 
@@ -146,23 +99,11 @@ class NoArticlesFound < StandardError; end
   end
 
   def new_article(title, body, author)
-<<<<<<< HEAD
->>>>>>> web_page
-=======
->>>>>>> web_page
     article = Article.new(title, body, author)
     @articles << article
   end
 
   def longest_articles
-<<<<<<< HEAD
-<<<<<<< HEAD
-    sorted = @articles.sort_by([:body.length])
-  end
-end
-=======
-=======
->>>>>>> web_page
     articles.sort_by{ |article| article.length }.reverse
   end
 
@@ -210,7 +151,3 @@ end
     articles.select { |article| article.contain?(query) }.sort_by{ |article| article.title }
   end
 end
-<<<<<<< HEAD
->>>>>>> web_page
-=======
->>>>>>> web_page
