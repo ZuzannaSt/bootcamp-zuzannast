@@ -131,4 +131,22 @@ class NoArticlesFound < StandardError; end
   def most_controversial_articles
     articles.sort_by{ |article| article.votes }.reverse
   end
+
+  def votes
+    articles.map(&:votes).inject(0,:+)
+  end
+
+  def authors
+    articles.map(&:author).uniq
+  end
+
+  def authors_statistics
+    amount = Hash.new(0)
+    articles.map(&:author).each { |author| amount[author] += 1 }
+    amount
+  end
+
+  def best_author
+    authors_statistics.max_by { |author, votes| votes }.first
+  end
 end
