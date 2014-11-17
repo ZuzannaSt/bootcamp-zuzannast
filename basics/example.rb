@@ -129,7 +129,7 @@ class NoArticlesFound < StandardError; end
   end
 
   def most_controversial_articles
-    articles.sort_by{ |article| article.votes }.reverse
+    articles.sort_by { |article| article.votes }.reverse
   end
 
   def votes
@@ -148,5 +148,9 @@ class NoArticlesFound < StandardError; end
 
   def best_author
     authors_statistics.max_by { |author, votes| votes }.first
+  end
+
+  def search(query)
+    articles.select { |article| article.contain?(query) }.sort_by{ |article| article.title }
   end
 end
