@@ -67,6 +67,7 @@ class ArticlesFileSystem
     articles = []
     Dir.glob(@dir + "/*.article").each do |file|
 <<<<<<< HEAD
+<<<<<<< HEAD
       file_name = File.basename(file, ".article")
       file_name = file_name.gsub('_',' ').capitalize
       author, likes, dislikes, body = File.read(file).split('||', 4)
@@ -74,6 +75,8 @@ class ArticlesFileSystem
       article.likes = likes.to_i
       article.dislikes = dislikes.to_i
 =======
+=======
+>>>>>>> web_page
       file_name = file.split('.')[0]
       file_name = file_name.split('/')[1]
       file_name = file_name.gsub('_',' ').capitalize
@@ -84,6 +87,9 @@ class ArticlesFileSystem
 
       likes.times {article.like!}
       dislikes.times {article.dislike!}
+<<<<<<< HEAD
+>>>>>>> web_page
+=======
 >>>>>>> web_page
 
       articles << article
@@ -93,6 +99,7 @@ class ArticlesFileSystem
 end
 
 class WebPage
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 attr_reader :articles
@@ -119,6 +126,8 @@ attr_reader :articles
     end
 
 =======
+=======
+>>>>>>> web_page
 class NoArticlesFound < StandardError; end
   attr_reader :articles, :articles_file_system
 
@@ -137,6 +146,9 @@ class NoArticlesFound < StandardError; end
   end
 
   def new_article(title, body, author)
+<<<<<<< HEAD
+>>>>>>> web_page
+=======
 >>>>>>> web_page
     article = Article.new(title, body, author)
     @articles << article
@@ -144,10 +156,13 @@ class NoArticlesFound < StandardError; end
 
   def longest_articles
 <<<<<<< HEAD
+<<<<<<< HEAD
     sorted = @articles.sort_by([:body.length])
   end
 end
 =======
+=======
+>>>>>>> web_page
     articles.sort_by{ |article| article.length }.reverse
   end
 
@@ -195,4 +210,7 @@ end
     articles.select { |article| article.contain?(query) }.sort_by{ |article| article.title }
   end
 end
+<<<<<<< HEAD
+>>>>>>> web_page
+=======
 >>>>>>> web_page
