@@ -1,10 +1,12 @@
 <%= form_for @account, url: register_path do |f| %>
  <% if @account.errors.any? %>
+  <div class="alert fade in alert-danger alert-dismissable">
     <ul>
       <% @account.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>
+  </div>
   <% end %>
 
   <%= f.fields_for :person do |p| %>
@@ -12,7 +14,7 @@
       <b>First name </b><br>
       <%= p.text_field :first_name, id: 'first_name' %>
     </p>
-    
+
     <p>
       <b>Last name</b><br>
       <%= p.text_field :last_name, id: 'last_name' %>
@@ -23,12 +25,12 @@
     <b>Email</b><br>
     <%= f.text_field :email, id: 'email' %>
   </p>
-  
+
   <p>
     <b>Password</b><br>
     <%= f.password_field :password, id: 'password' %>
   </p>
-  
+
   <p>
     <b>Confirm password</b><br>
     <%= f.password_field :password_confirmation, id: 'password_confirmation' %>
