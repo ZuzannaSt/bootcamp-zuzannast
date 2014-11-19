@@ -1,10 +1,12 @@
 <%= form_for @parking do |f| %>
  <% if @parking.errors.any? %>
-    <ul>
-      <% @parking.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+    <div class="alert fade in alert-danger alert-dismissable">
+      <ul>
+        <% @parking.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 
   <%= f.fields_for :address do |a| %>
@@ -12,12 +14,12 @@
       <b>City </b><br>
       <%= a.text_field :city, id: 'city' %>
     </p>
-    
+
     <p>
       <b>Zip code</b><br>
       <%= a.text_field :zip_code, id: 'zip_code' %>
     </p>
-    
+
     <p>
       <b>Street</b><br>
       <%= a.text_field :street, id: 'street' %>
@@ -28,17 +30,17 @@
     <b>Parking places</b><br>
     <%= f.text_field :places, id: 'places' %>
   </p>
-  
+
   <p>
     <b>Parking kind</b><br>
     <%= f.select :kind, ['indoor', 'outdoor', 'private', 'street'], {include_blank: "Choose kind", default: nil}, id: 'kind' %>
   </p>
-  
+
   <p>
     <b>Parking hour price</b><br>
     <%= f.text_field :hour_price, id: 'hour_price' %>
   </p>
-  
+
   <p>
     <b>Parking day price</b><br>
     <%= f.text_field :day_price, id: 'day_price' %>
