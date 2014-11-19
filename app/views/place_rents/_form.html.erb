@@ -1,11 +1,13 @@
 <div class = "container">
   <%= form_for ([@parking, @place]) do |f| %>
-   <% if @place.errors.any? %>
-      <ul>
-        <% @place.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+    <% if @place.errors.any? %>
+      <div class="alert fade in alert-danger alert-dismissable">
+        <ul>
+          <% @place.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
 
     <p>
@@ -22,7 +24,7 @@
       <b>Select car</b><br>
       <%= f.collection_select :car_id, current_person.cars, :id, :model, { prompt: 'Select car' }  %>
     </p>
-    
+
     <p>
       <%= f.submit %>
     </p>
