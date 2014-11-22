@@ -23,19 +23,18 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    if params[:locale].blank?
-      I18n.locale = extract_locale_from_accept_language_header
-    else
-      I18n.locale = params[:locale]
-    end
+    I18n.locale = params[:locale] || extract_locale_from_accept_language_header
   end
 
   def default_url_options(options = {})
-    {locale: I18n.locale}
+    { locale: I18n.locale }
   end
 
   def extract_locale_from_accept_language_header
-    browser_locale = request.env['HTTP_ACCEPT_LANGUAGE'].try(:scan, /^[a-z]{2}/).try(:first).try(:to_sym)
+    if request.env['HTTP_ACCEPT_LANGUAGE'].present?
+      browser_locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    end
+
     if I18n.available_locales.include? browser_locale
       browser_locale
     else
