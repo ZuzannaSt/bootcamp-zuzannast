@@ -1,14 +1,7 @@
 <div class = "container">
   <%= form_for ([@parking, @place]) do |f| %>
-    <% if @place.errors.any? %>
-      <div class="alert fade in alert-danger alert-dismissable">
-        <ul>
-          <% @place.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+
+    <%= render "layouts/error_messages", object: @place %>
 
     <p>
       <b>Start date</b><br>

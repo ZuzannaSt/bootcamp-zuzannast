@@ -1,13 +1,6 @@
 <%= form_for @parking do |f| %>
- <% if @parking.errors.any? %>
-    <div class="alert fade in alert-danger alert-dismissable">
-      <ul>
-        <% @parking.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+
+  <%= render "layouts/error_messages", object: @parking %>
 
   <%= f.fields_for :address do |a| %>
     <p>

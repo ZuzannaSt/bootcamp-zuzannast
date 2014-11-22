@@ -1,13 +1,6 @@
 <%= form_for @account, url: register_path do |f| %>
- <% if @account.errors.any? %>
-  <div class="alert fade in alert-danger alert-dismissable">
-    <ul>
-      <% @account.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
+
+  <%= render "layouts/error_messages", object: @account %>
 
   <%= f.fields_for :person do |p| %>
     <p>
