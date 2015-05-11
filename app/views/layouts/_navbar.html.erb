@@ -2,7 +2,7 @@
   <div class="container">
     <ul class="nav navbar-nav">
       <% if current_person %>
-        <li><%= link_to current_person.full_name, "#" %></li>
+        <li><%= link_to current_person.full_name, "#", class:"navbar-brand"%></li>
         <li><%= link_to "Log out", :session, method: :delete %></li>
         <li><%= link_to "Cars", cars_path %></li>
         <li><%= link_to "Rents", place_rents_path %></li>
