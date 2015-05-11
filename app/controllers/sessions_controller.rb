@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:person_id] = nil
+    session.delete(:person_id)
     redirect_to parkings_path, notice: "Logged out!"
   end
 

@@ -15,7 +15,7 @@
               %td
                 - if place.parking && place.parking.address
                   = link_to place.parking.address.city, place.parking
-              %td = link_to place.car.try(:model), place.car
-              %td = place.start_date
-              %td = place.end_date
-              %td = link_to "Show", place_rent_path(place)
+              %td= link_to place.car.try(:model), place.car
+              %td= place.start_date.to_formatted_s(:short)
+              %td= place.end_date.to_formatted_s(:short)
+              %td= link_to "Show", place_rent_path(place)

@@ -1,26 +1,30 @@
 <div class = "container">
-  <table class = "table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>Owner</th>
-        <th>Model</th>
-        <th>Number</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= @car.owner.first_name %></td>
-        <td><%= @car.model %></td>
-        <td><%= @car.registration_number %></td>
-      </tr>
-    </tbody>
-  </table>
-  <% if @car.image_stored? %>
-    <div class="image">
-      <%= image_tag @car.image.thumb('400x200#').url %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <table class = "table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Owner</th>
+            <th>Model</th>
+            <th>Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @car.owner.first_name %></td>
+            <td><%= @car.model %></td>
+            <td><%= @car.registration_number %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% if @car.image_stored? %>
+        <div class="image">
+          <%= image_tag @car.image.thumb('400x200#').url %>
+        </div>
+      <% end %>
+      <br>
+      <%= link_to 'Edit', edit_car_path(@car) %> |
+      <%= link_to 'Back', cars_path %>
     </div>
-  <% end %>
-  <br>
-  <%= link_to 'Edit', edit_car_path(@car) %> |
-  <%= link_to 'Back', cars_path %>
+  </div>
 </div>

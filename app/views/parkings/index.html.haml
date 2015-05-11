@@ -1,17 +1,14 @@
 .container
   .row
     .col-md-10.col-md-offset-1
-      %table.table.table-bordered.table-hover
+      %table.table.table-bordered.table-hover.text-center
         %tr
-          %th City
-          %th Places
-          %th Hour price
-          %th Day price
+          %th.text-center City
+          %th.text-center Places
+          %th.text-center Hour price
+          %th.text-center Day price
           - if current_person
-            %th
-            %th
-            %th
-            %th
+            %th.text-center Actions
         - @parkings.each do |parking|
           %tr
             %td
@@ -21,14 +18,20 @@
             %td= parking.hour_price
             %td= parking.day_price
             - if current_person
-              %td= link_to "RENT", new_parking_place_rent_path(parking.id)
-              %td= link_to "Show", parking
-              %td= link_to "Edit", edit_parking_path(parking)
-              %td= link_to "Remove", parking, method: :delete, data: { confirm: "Are you sure?" }
+              %td
+                = link_to new_parking_place_rent_path(parking.id), class: "btn button-lg text-danger" do
+                  %span.glyphicon.glyphicon-shopping-cart
+                = link_to parking, class: "btn button-lg" do
+                  %span.glyphicon.glyphicon-eye-open
+                = link_to edit_parking_path(parking), class: "btn button-lg" do
+                  %span.glyphicon.glyphicon-pencil
+                = link_to parking, method: :delete, data: { confirm: "Are you sure?" }, class: "btn button-lg" do
+                  %span.glyphicon.glyphicon-trash
 
       = will_paginate @parkings, renderer: BootstrapPagination::Rails
+      %br/
+      = link_to new_parking_path(@parking), class: "btn button-lg" do
+        %span.glyphicon.glyphicon-plus.space
+        new parking
 
   = render 'parkings/search'
-
-  %br/
-  = link_to "Add new parking", new_parking_path(@parking)

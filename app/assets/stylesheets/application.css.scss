@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+  @import "bootstrap-sprockets";
   @import "bootstrap";
 
   body {
@@ -21,4 +22,8 @@
 
   .well {
     margin-bottom: -20px;
+  }
+
+  .space {
+    margin-right: 5px;
   }
