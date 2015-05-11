@@ -2,6 +2,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
+include Capybara::DSL
 OmniAuth.config.test_mode = true
 
 class ActiveSupport::TestCase
@@ -24,8 +25,7 @@ class ActionDispatch::IntegrationTest
   end
 
   def log_in
-    visit '/parkings'
-    click_link 'Log in'
+    visit '/en/login'
     fill_in 'email', with: 'steve@jobs.com'
     fill_in 'password', with: 'secret123'
     click_button 'Log in'
