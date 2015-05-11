@@ -7,6 +7,9 @@
             <th>Owner</th>
             <th>Model</th>
             <th>Number</th>
+            <% if current_person %>
+              <th>Actions</th>
+            <% end %>
           </tr>
         </thead>
         <tbody>
@@ -14,6 +17,16 @@
             <td><%= @car.owner.first_name %></td>
             <td><%= @car.model %></td>
             <td><%= @car.registration_number %></td>
+            <% if current_person %>
+              <td>
+                <%= link_to edit_car_path(@car), class: "btn button-lg" do %>
+                  <span class="glyphicon glyphicon-pencil"></span>
+                <% end %>
+                <%= link_to @car, method: :delete, data: { confirm: "Are you sure?" }, class: "btn button-lg" do %>
+                  <span class="glyphicon glyphicon-trash"></span>
+                <% end %>
+              </td>
+            <% end %>
           </tr>
         </tbody>
       </table>
@@ -23,8 +36,9 @@
         </div>
       <% end %>
       <br>
-      <%= link_to 'Edit', edit_car_path(@car) %> |
-      <%= link_to 'Back', cars_path %>
+      <%= link_to cars_path, class: "btn button-lg" do %>
+        <span class="glyphicon glyphicon-backward space"></span> back to cars
+      <% end %>
     </div>
   </div>
 </div>

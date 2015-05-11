@@ -1,21 +1,26 @@
 .container
   .row
     .col-md-10.col-md-offset-1
-      %table.table.table-bordered.table-hover
+      %table.table.table-bordered.table-hover.text-center
         %thead
           %tr
-            %th{:colspan => "3"} Car model
-            %th{:colspan => "3"} Number
-            %th{:colspan => "3"}
-            %th{:colspan => "3"}
-            %th{:colspan => "3"}
+            %th.text-center Car model
+            %th.text-center Number
+            - if current_person
+              %th.text-center Actions
         %tbody
           - @cars.each do |car|
             %tr
-              %td{:colspan => "3"}= car.model
-              %td{:colspan => "3"}= car.registration_number
-              %td{:colspan => "3"}= link_to 'Show', car
-              %td{:colspan => "3"}= link_to 'Edit', edit_car_path(car)
-              %td{:colspan => "3"}= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' }
+              %td= car.model
+              %td= car.registration_number
+              %td
+                = link_to car, class: "btn button-lg" do
+                  %span.glyphicon.glyphicon-eye-open
+                = link_to edit_car_path(car), class: "btn button-lg" do
+                  %span.glyphicon.glyphicon-pencil
+                = link_to car, method: :delete, data: { confirm: "Are you sure?" }, class: "btn button-lg" do
+                  %span.glyphicon.glyphicon-trash
       %br/
-      = link_to 'New Car', new_car_path
+      = link_to new_car_path, class: "btn button-lg" do
+        %span.glyphicon.glyphicon-plus.space
+        new car

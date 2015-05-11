@@ -11,6 +11,9 @@
           <th>Places</th>
           <th>Hour price</th>
           <th>Day price</th>
+          <% if current_person %>
+            <th>Actions</th>
+          <% end %>
         </tr>
 
         <tr>
@@ -22,9 +25,21 @@
           <td><%= @parking.places %></td>
           <td><%= @parking.hour_price %></td>
           <td><%= @parking.day_price %></td>
+          <% if current_person %>
+            <td>
+              <%= link_to edit_parking_path(@parking), class: "btn button-lg" do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+              <% end %>
+              <%= link_to @parking, method: :delete, data: { confirm: "Are you sure?" }, class: "btn button-lg" do %>
+                <span class="glyphicon glyphicon-trash"></span>
+              <% end %>
+            </td>
+          <% end %>
         </tr>
       </table>
-      <%= link_to "<<< Back", parkings_path %>
+      <%= link_to parkings_path, class: "btn button-lg" do %>
+        <span class="glyphicon glyphicon-backward space"></span> back to parkings
+      <% end %>
     </div>
   </div>
 </div>

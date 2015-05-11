@@ -32,7 +32,9 @@
         </tbody>
       </table>
       <br>
-      <%= link_to "<<< Back", place_rents_path %>
+      <%= link_to place_rents_path, class: "btn button-lg" do %>
+        <span class="glyphicon glyphicon-backward space"></span>back to rents
+      <% end %>
     </div>
   </div>
 </div>
